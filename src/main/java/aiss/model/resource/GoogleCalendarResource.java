@@ -13,7 +13,6 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.CalendarScopes;
-import com.google.api.services.calendar.model.CalendarListEntry;
 
 public class GoogleCalendarResource {
 	private static final Logger log = Logger.getLogger(GoogleCalendarResource.class.getName());
