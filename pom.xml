@@ -143,6 +143,20 @@
 			<version>${google.client.version}</version>
 		</dependency>
 
+		<!-- Google API Client Library (AppEngine extension) -->
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client-appengine</artifactId>
+			<version>${google.client.version}</version>
+		</dependency>
+
+		<!-- Google Calendar API Services -->
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-calendar</artifactId>
+			<version>v3-rev260-1.23.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
