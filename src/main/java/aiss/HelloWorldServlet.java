@@ -8,16 +8,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import aiss.model.resource.GoogleCalendarResource;
+
 public class HelloWorldServlet extends HttpServlet {
-	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static final Logger log = Logger.getLogger(HelloWorldServlet.class.getName());
-	
+
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		
+
 		// Sample log
 		log.log(Level.FINE, "Processing GET request");
-		 
+
 		resp.setContentType("text/plain");
 		resp.getWriter().println("Hello world!");
+
+		// Google Calendar API Test
+		GoogleCalendarResource resource = new GoogleCalendarResource();
+		resp.getWriter().println(resource.getPrimaryCalendar().getSummary());
+
 	}
 }
