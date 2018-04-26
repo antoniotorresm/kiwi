@@ -29,7 +29,5 @@ public class HelloWorldServlet extends HttpServlet {
 		// Google Calendar API Test
 		GoogleCalendarResource resource = new GoogleCalendarResource();
 		resp.getWriter().println(resource.getPrimaryCalendar().getSummary());
-		com.google.api.services.calendar.model.Events events = resource.getEvents();
-		resource.sendInvitationToUser("torres.morinigo.antonio@gmail.com", events.getItems().get(1).getId());
 	}
 }
