@@ -21,6 +21,11 @@ import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.EventAttendee;
 import com.google.api.services.calendar.model.EventDateTime;
 
+/**
+ * 
+ * @author atorresm
+ *
+ */
 public class GoogleCalendarResource {
 	private static final Logger log = Logger.getLogger(GoogleCalendarResource.class.getName());
 
