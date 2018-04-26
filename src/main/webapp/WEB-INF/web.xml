@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	version="2.5">
-	<servlet>
-		<servlet-name>HelloWorld</servlet-name>
-		<servlet-class>aiss.HelloWorldServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>HelloWorld</servlet-name>
-		<url-pattern>/helloworld</url-pattern>
-	</servlet-mapping>
-	
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-	</welcome-file-list>
-	
-	<!--  OAUTH SERVLETS 
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <servlet>
+    <servlet-name>HelloWorld</servlet-name>
+    <servlet-class>aiss.HelloWorldServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelloWorld</servlet-name>
+    <url-pattern>/helloworld</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>HackathonCreateController</display-name>
+    <servlet-name>HackathonCreateController</servlet-name>
+    <servlet-class>aiss.controller.hackathon.HackathonCreateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HackathonCreateController</servlet-name>
+    <url-pattern>/HackathonCreateController</url-pattern>
+  </servlet-mapping>
+  
+  <!--  OAUTH SERVLETS 
   
   	For each OAuth 2.0 service, you need to create two servlets: one for the initiation 
   	and another for the callback. After sucess the token for the provider will be available
@@ -71,5 +77,4 @@
   </servlet-mapping>
   
   -->
-
 </web-app>
