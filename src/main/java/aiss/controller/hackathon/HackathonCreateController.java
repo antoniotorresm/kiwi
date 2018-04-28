@@ -1,7 +1,6 @@
 package aiss.controller.hackathon;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -10,11 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.api.client.util.DateTime;
-
 import aiss.model.github.InviteCollaboratorResult;
 import aiss.model.github.RepositoryCreateResult;
 import aiss.model.resource.GithubResource;
+import aiss.model.resource.GoogleCalendarResource;
 
 /**
  * Servlet implementation class HackathonCreateController
@@ -51,9 +49,9 @@ public class HackathonCreateController extends HttpServlet {
 		String descripcion = request.getParameter("descripcion");
 		String localizacion = request.getParameter("localizacion");
 		LocalDateTime fechaInicio = LocalDateTime.parse(request.getParameter("fechaInicio"),
-				DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+				DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		LocalDateTime fechaFin = LocalDateTime.parse(request.getParameter("fechaFin"),
-				DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+				DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		String nombreRepositorio = request.getParameter("nombreRepositorio");
 		String usuarioGithub = request.getParameter("usuarioGithub");
 		String correo = request.getParameter("correo");
@@ -62,9 +60,14 @@ public class HackathonCreateController extends HttpServlet {
 		// TODO: Validaciones
 
 		// TODO: Usar recursos de las distintas APIS
+		// GitHub
 		GithubResource github = new GithubResource();
 		RepositoryCreateResult repoResult = github.createRepository(nombreRepositorio);
 		InviteCollaboratorResult invResult = github.inviteCollaborator(nombreRepositorio, usuarioGithub);
+		// Google Calendar
+		GoogleCalendarResource calendar = new GoogleCalendarResource();
+		String eventId = calendar.createEvent(titulo, descripcion, localizacion, fechaInicio, fechaFin, correo);
+		calendar.saveEventData(eventId, repoResult.getUrl(), hashtag);
 		
 		// TODO: Segun los distintos redirigir a success o failure. Si una de las APIs falla,
 		// deberíamos hacer rollback a lo que sí ha funcionado?

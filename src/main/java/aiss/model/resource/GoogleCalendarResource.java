@@ -3,10 +3,14 @@ package aiss.model.resource;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,12 +22,13 @@ import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.CalendarScopes;
 import com.google.api.services.calendar.model.Event;
+import com.google.api.services.calendar.model.Event.ExtendedProperties;
 import com.google.api.services.calendar.model.EventAttendee;
 import com.google.api.services.calendar.model.EventDateTime;
 
 /**
  * 
- * @author atorresm
+ * @author Antonio Torres Moríñigo
  *
  */
 public class GoogleCalendarResource {
@@ -55,12 +60,15 @@ public class GoogleCalendarResource {
 		return calendarAdmin.calendars().get("primary").execute();
 	}
 
-	public void createEvent(String name, String description, String location, DateTime startDateTime,
-			DateTime endDateTime, String creatorEmail) throws IOException {
+	public String createEvent(String name, String description, String location, LocalDateTime fechaInicio,
+			LocalDateTime fechaFin, String creatorEmail) throws IOException {
 		Event event = new Event().setSummary(name).setLocation(location).setDescription(description);
-		EventDateTime start = new EventDateTime().setDateTime(startDateTime).setTimeZone("Europe/Madrid");
+		// Convert dates
+		DateTime startTime = new DateTime(fechaInicio.atZone(ZoneId.of("Europe/Madrid")).toInstant().getEpochSecond());
+		DateTime endTime = new DateTime(fechaInicio.atZone(ZoneId.of("Europe/Madrid")).toInstant().getEpochSecond());
+		EventDateTime start = new EventDateTime().setDateTime(startTime).setTimeZone("Europe/Madrid");
 		event.setStart(start);
-		EventDateTime end = new EventDateTime().setDateTime(endDateTime).setTimeZone("Europe/Madrid");
+		EventDateTime end = new EventDateTime().setDateTime(endTime).setTimeZone("Europe/Madrid");
 		event.setEnd(end);
 		event.setAnyoneCanAddSelf(true);
 		event.setVisibility("public");
@@ -70,6 +78,27 @@ public class GoogleCalendarResource {
 		event.setAttendees(Arrays.asList(creator));
 		calendarAdmin.events().insert("primary", event).setSendNotifications(true).execute();
 		log.log(Level.FINE, "Event created");
+		return event.getId();
+	}
+
+	public void saveEventData(String eventId, String repoUrl, String hashtag) throws IOException {
+		ExtendedProperties data = new ExtendedProperties();
+		Map<String, String> map = new HashMap<>();
+		map.put("repoUrl", repoUrl);
+		map.put("hashtag", hashtag);
+		data.setShared(map);
+		Event changes = new Event().setExtendedProperties(data);
+		calendarAdmin.events().patch("primary", eventId, changes).execute();
+	}
+
+	public String getEventHashtag(String eventId) throws IOException {
+		return calendarAdmin.events().get("primary", eventId).execute().getExtendedProperties().getShared()
+				.get("hashtag");
+	}
+
+	public String getEventRepoUrl(String eventId) throws IOException {
+		return calendarAdmin.events().get("primary", eventId).execute().getExtendedProperties().getShared()
+				.get("repoUrl");
 	}
 
 	public Integer eventAttendeesNumber(String eventId) throws IOException {
