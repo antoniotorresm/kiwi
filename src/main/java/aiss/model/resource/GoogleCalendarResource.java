@@ -39,7 +39,7 @@ public class GoogleCalendarResource {
 	public GoogleCalendarResource() {
 		try {
 			GoogleCredential credential = GoogleCredential
-					.fromStream(new FileInputStream("credentials/google_client_secrets.json"))
+					.fromStream(new FileInputStream("WEB-INF/credentials/google_client_secrets.json"))
 					.createScoped(Collections.singleton(CalendarScopes.CALENDAR));
 			calendarAdmin = new Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential).setApplicationName("Kiwi")
 					.build();

@@ -29,7 +29,7 @@ import aiss.model.github.RepositoryCreateResult;
 public class GithubResource {
 
 	private static final Logger log = Logger.getLogger(GithubResource.class.getName());
-	private static final String GITHUB_JSON_PATH = "src/main/webapp/credentials/github.json";
+	private static final String GITHUB_JSON_PATH = "WEB-INF/credentials/github.json";
 	private static final String ENDPOINT = "https://api.github.com";
 	// TODO: Add header for explicit version v3 usage
 	private static final String EXPLICIT_V3_HEADER = "Accept: application/vnd.github.v3+json";
