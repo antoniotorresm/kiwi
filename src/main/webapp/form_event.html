@@ -38,7 +38,7 @@
 
 
 	<div class="container">
-		<form id="insertEvent" method="get" action="VACIO">
+		<form id="insertEvent" method="POST" action="/HackathonCreateController">
 			<div class="row">
 				<div class="col-lg-6">
 
@@ -64,13 +64,13 @@
 
 						<div class="form-group">
 							<label for="startDate" class="control-label">Fecha de
-								Inicio: </label> <input type="date" id="startDate" name="startDate"
+								Inicio: </label> <input type="datetime-local" id="startDate" name="startDate"
 								class="form-control" required />
 						</div>
 
 						<div class="form-group">
 							<label for="endDate" class="control-label">Fecha de Fin:
-							</label> <input type="date" id="endDate" name="endDate"
+							</label> <input type="datetime-local" id="endDate" name="endDate"
 								class="form-control" required />
 						</div>
 					</fieldset>

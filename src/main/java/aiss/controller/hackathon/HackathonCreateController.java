@@ -3,6 +3,9 @@ package aiss.controller.hackathon;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +22,7 @@ import aiss.model.resource.GoogleCalendarResource;
  */
 public class HackathonCreateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger log = Logger.getLogger(HackathonCreateController.class.getName());
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -44,17 +48,16 @@ public class HackathonCreateController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String titulo = request.getParameter("titulo");
-		String descripcion = request.getParameter("descripcion");
-		String localizacion = request.getParameter("localizacion");
-		LocalDateTime fechaInicio = LocalDateTime.parse(request.getParameter("fechaInicio"),
-				DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-		LocalDateTime fechaFin = LocalDateTime.parse(request.getParameter("fechaFin"),
-				DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-		String nombreRepositorio = request.getParameter("nombreRepositorio");
-		String usuarioGithub = request.getParameter("usuarioGithub");
-		String correo = request.getParameter("correo");
+		String titulo = request.getParameter("title");
+		String descripcion = request.getParameter("description");
+		String localizacion = request.getParameter("location");
+		LocalDateTime fechaInicio = LocalDateTime.parse(request.getParameter("startDate"),
+				DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+		LocalDateTime fechaFin = LocalDateTime.parse(request.getParameter("endDate"),
+				DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+		String nombreRepositorio = request.getParameter("reponamegithub");
+		String usuarioGithub = request.getParameter("usernamegithub");
+		String correo = request.getParameter("email");
 		String hashtag = request.getParameter("hashtag");
 
 		// TODO: Validaciones
@@ -68,12 +71,11 @@ public class HackathonCreateController extends HttpServlet {
 		GoogleCalendarResource calendar = new GoogleCalendarResource();
 		String eventId = calendar.createEvent(titulo, descripcion, localizacion, fechaInicio, fechaFin, correo);
 		calendar.saveEventData(eventId, repoResult.getUrl(), hashtag);
-		
-		// TODO: Segun los distintos redirigir a success o failure. Si una de las APIs falla,
+
+		// TODO: Segun los distintos redirigir a success o failure. Si una de las APIs
+		// falla,
 		// deberíamos hacer rollback a lo que sí ha funcionado?
-		
 
 		doGet(request, response);
 	}
-
 }

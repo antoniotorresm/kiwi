@@ -3,8 +3,10 @@ package aiss.model.resource;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -63,22 +65,27 @@ public class GoogleCalendarResource {
 	public String createEvent(String name, String description, String location, LocalDateTime fechaInicio,
 			LocalDateTime fechaFin, String creatorEmail) throws IOException {
 		Event event = new Event().setSummary(name).setLocation(location).setDescription(description);
-		// Convert dates
-		DateTime startTime = new DateTime(fechaInicio.atZone(ZoneId.of("Europe/Madrid")).toInstant().getEpochSecond());
-		DateTime endTime = new DateTime(fechaInicio.atZone(ZoneId.of("Europe/Madrid")).toInstant().getEpochSecond());
-		EventDateTime start = new EventDateTime().setDateTime(startTime).setTimeZone("Europe/Madrid");
-		event.setStart(start);
-		EventDateTime end = new EventDateTime().setDateTime(endTime).setTimeZone("Europe/Madrid");
-		event.setEnd(end);
+		EventDateTime startDateTime = convertLocalDateTimeToEventDateTime(fechaInicio);
+		EventDateTime endDateTime = convertLocalDateTimeToEventDateTime(fechaFin);
+		event.setStart(startDateTime);
+		event.setEnd(endDateTime);
 		event.setAnyoneCanAddSelf(true);
 		event.setVisibility("public");
 		// Creator
 		EventAttendee creator = new EventAttendee().setEmail(creatorEmail);
 		creator.setOrganizer(true);
 		event.setAttendees(Arrays.asList(creator));
-		calendarAdmin.events().insert("primary", event).setSendNotifications(true).execute();
+		Event created = calendarAdmin.events().insert("primary", event).setSendNotifications(true).execute();
 		log.log(Level.FINE, "Event created");
-		return event.getId();
+		return created.getId();
+	}
+
+	private EventDateTime convertLocalDateTimeToEventDateTime(LocalDateTime in) {
+		ZoneOffset offset = ZoneId.of("Europe/Madrid").getRules().getOffset(Instant.now());
+		long millisSinceEpoch = in.toEpochSecond(offset) * 1000;
+		EventDateTime res = new EventDateTime().setDateTime(new DateTime(millisSinceEpoch))
+				.setTimeZone("Europe/Madrid");
+		return res;
 	}
 
 	public void saveEventData(String eventId, String repoUrl, String hashtag) throws IOException {
@@ -88,7 +95,9 @@ public class GoogleCalendarResource {
 		map.put("hashtag", hashtag);
 		data.setShared(map);
 		Event changes = new Event().setExtendedProperties(data);
-		calendarAdmin.events().patch("primary", eventId, changes).execute();
+		Event patched = calendarAdmin.events().patch("primary", eventId, changes).execute();
+		log.log(Level.FINE, "Repo URL saved: " + patched.getExtendedProperties().getShared().get("repoUrl"));
+		log.log(Level.FINE, "Hashtag saved: " + patched.getExtendedProperties().getShared().get("hashtag"));
 	}
 
 	public String getEventHashtag(String eventId) throws IOException {
