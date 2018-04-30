@@ -8,12 +8,22 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+<style>
+body {
+	position: relative;
+}
 
-<title>Proyecto KIWI</title>
+.carousel-inner img {
+	width: 100%;
+	height: 100%;
+}
+</style>
+<title>Kiwi Hackathons</title>
 </head>
 
-<body>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
 
+<<<<<<< HEAD
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<span class="navbar-text"> 🥝 </span>
 		<ul class="navbar-nav">
@@ -34,58 +44,187 @@
 		<p>Mashup de herramientas indispensables para una organización
 			impecable de hackathones! 👌</p>
 	</div>
+=======
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+		<span class="navbar-text"> 🥝 </span>
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" href="#section1">Home</a></li>
+			<li class="nav-item"><a class="nav-link" href="#section2">Servicios</a></li>
+			<li class="nav-item"><a class="nav-link" href="#section3">Explorar</a></li>
+			<li class="nav-item"><a class="nav-link" href="#section4">Crear</a></li>
+			<li class="nav-item"><a class="nav-link" href="#section5">About</a></li>
+		</ul>
+	</nav>
 
-	<div class="container">
+	<div id="section1" class="container-fluid"
+		style="padding-top: 7%; padding-bottom: 7%">
+		<div class="jumbotron text-center">
+			<h1>🥝KIWI🥝</h1>
+			<p>Mashup de herramientas indispensables para una organización
+				impecable de hackathones! 👌</p>
+		</div>
+>>>>>>> 3a81937309aba25648add62d45986343e24e985a
+
 		<div class="row">
-			<div class="col-sm-6">
-				<h3>Resumen</h3>
+			<div class="col-lg-4">
+				<img alt="what do we do?" src="./img/doing.jpg" width="100%"
+					height=auto>
+			</div>
+			<div class="col-lg-8" style="padding-top: 40px">
+				<h3>¿Qué hacemos?</h3>
+				<br>
 				<p>KIWI auna todo lo que necesitas para empezar un hackathon,
 					desde integración con servicios de calendarios pasando por
 					repositorios de Github y redes sociales para que tu evento sea
 					fácil de organizar y llegue a todas partes.</p>
 			</div>
+		</div>
+	</div>
 
-			<div class="col-sm-6">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>Nombre</th>
-							<th>Apellidos</th>
-							<th>Grupo</th>
-						<tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Antonio</td>
-							<td>Torres Moríñigo</td>
-							<td>1</td>
-						</tr>
-						<tr>
-							<td>Francisco</td>
-							<td>Batista Núñez</td>
-							<td>1</td>
-						</tr>
-						<tr>
-							<td>Antonio</td>
-							<td>Martínez Rojas</td>
-							<td>1</td>
-						</tr>
-						<tr>
-							<td>José María</td>
-							<td>Guisado Gómez</td>
-							<td>Inglés</td>
-						</tr>
-					</tbody>
-				</table>
+
+	<div id="section2" class="container-fluid bg-dark"
+		style="padding-top: 0%; padding-bottom: 0%">
+		<div id="services" class="carousel slide" data-ride="carousel">
+			<ul class="carousel-indicators">
+				<li data-target="#services" data-slide-to="0" class="active"></li>
+				<li data-target="#services" data-slide-to="1"></li>
+				<li data-target="#services" data-slide-to="2"></li>
+			</ul>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="./img/ordenadores.jpg" alt="crea" width="100%"
+						height="100%">
+					<div class="carousel-caption">
+						<h2>Crear</h2>
+						<p>Tendras todas las herramientas necesarias</p>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img src="./img/hackathon.jpg" alt="explora" width="100%"
+						height="100%">
+					<div class="carousel-caption">
+						<h2>Explorar</h2>
+						<p>Podrás ver los todos hackathones disponibles</p>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img src="./img/poster-hackathon.jpg" alt="unete" width="100%"
+						height="100%">
+					<div class="carousel-caption">
+						<h2>Kiwi</h2>
+						<p>Únete a nosotros</p>
+					</div>
+				</div>
+			</div>
+			<!-- Muestra los iconos para avanzar y retroceder -->
+			<a class="carousel-control-prev" href="#services" data-slide="prev">
+				<span class="carousel-control-prev-icon"></span>
+			</a> <a class="carousel-control-next" href="#services" data-slide="next">
+				<span class="carousel-control-next-icon"></span>
+			</a>
+		</div>
+
+	</div>
+
+	<!-- EXPLORAR -->
+
+	<div id="section3" class="container-fluid bg-warning"
+		style="padding-top: 10%; padding-bottom: 10%; padding-left: 2%">
+
+		<div class="row">
+			<div class="col-lg-8 border border-danger rounded"
+				style="padding-top: 40px">
+				<h3>Explora</h3>
+				<br>
+				<p>En esta sección podrás explorar todos los eventos disponibles
+					en nuestra aplicación e inscribirte en el que más te interese. ¡No
+					te pierdas el próximo hackathon!</p>
+				<a href="https://kiwi-aiss.appspot.com/event_list.jsp"
+					class="btn btn-dark" role="button">Ir al sitio</a>
+			</div>
+			<div class="col-lg-4">
+				<a href="https://kiwi-aiss.appspot.com/event_list.jsp"><img
+					alt="explore" src="./img/explore.jpg" width="100%" height=auto></a>
 			</div>
 		</div>
+	</div>
 
-		<div class="panel panel-default">
-			<div class="panel-body">Proyecto de AISS - Grupo KIWI - Escuela
-				Técnica Superior de Ingeniería Informática - Curso 2017/2018</div>
+	<!-- CREAR -->
+
+	<div id="section4" class="container-fluid bg-"
+		style="padding-top: 10%; padding-bottom: 10%; padding-left: 2%">
+
+		<div class="row">
+			<div class="col-lg-4">
+				<a href="https://kiwi-aiss.appspot.com/form_event.html"><img
+					alt="explore" src="./img/create.jpg" width="100%" height=auto></a>
+			</div>
+			<div class="col-lg-8 border border-danger rounded"
+				style="padding-top: 40px">
+				<h3>Crea</h3>
+				<br>
+				<p>En esta sección podrás crear tu propio evento para hackathon,
+					pudiendo disfrutar de las facilidades de la creación automatizada
+					de parte de Kiwi de un repositorio propio en Git Hub y un evento en
+					Google Calendar.</p>
+				<a href="https://kiwi-aiss.appspot.com/form_event.html"
+					class="btn btn-dark" role="button">Ir al sitio</a>
+			</div>
+
 		</div>
+	</div>
 
+	<!-- ABOUT -->
 
+	<div id="section5" class="container-fluid bg-danger"
+		style="padding-top: 10%; padding-bottom: 5%">
+		<div id="portfolio" class="container-fluid text-center bg-grey">
+			<h2>Miembros</h2>
+			<br>
+			<h4>Quien está detrás de kiwi</h4>
+			</br>
+			<div class="row text-center slideanim">
+				<div class="col-sm-3">
+					<div class="card img-fluid" style="width: 500px">
+						<img class="card-img-top" src="./img/atorresm.jpg"
+							alt="Card image" style="width: 100%">
+						<div class="card-img-overlay">
+							<h4 class="card-title">Antonio Torres Moríñigo</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="card img-fluid" style="width: 500px">
+						<img class="card-img-top" src="./img/JMGuisadoG.jpg"
+							alt="Card image" style="width: 100%">
+						<div class="card-img-overlay">
+							<h4 class="card-title" style="color: #f2f2f2;">José María
+								Guisado Gómez</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="card img-fluid" style="width: 500px">
+						<img class="card-img-top" src="./img/a8081.jpg" alt="Card image"
+							style="width: 100%">
+						<div class="card-img-overlay">
+							<h4 class="card-title" style="color: #f2f2f2;">Antonio
+								Martínez Rojas</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="card img-fluid" style="width: 500px">
+						<img class="card-img-top" src="./img/frabatnun.jpg"
+							alt="Card image" style="width: 100%">
+						<div class="card-img-overlay">
+							<h4 class="card-title">Francisco Batista Nuñez</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+		</div>
 	</div>
 
 	<!-- js requerido para asegurar correcto funcionamiento de bootstrap -->
