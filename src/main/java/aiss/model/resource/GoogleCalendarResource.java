@@ -35,6 +35,7 @@ import com.google.api.services.calendar.model.EventDateTime;
  */
 public class GoogleCalendarResource {
 	private static final Logger log = Logger.getLogger(GoogleCalendarResource.class.getName());
+	private static final String GOOGLE_JSON_PATH = "WEB-INF/credentials/google_client_secrets.json";
 
 	// HTTPTransport singleton
 	private static final HttpTransport HTTP_TRANSPORT = new UrlFetchTransport();
@@ -46,7 +47,7 @@ public class GoogleCalendarResource {
 	public GoogleCalendarResource() {
 		try {
 			GoogleCredential credential = GoogleCredential
-					.fromStream(new FileInputStream("WEB-INF/credentials/google_client_secrets.json"))
+					.fromStream(new FileInputStream(GOOGLE_JSON_PATH))
 					.createScoped(Collections.singleton(CalendarScopes.CALENDAR));
 			calendarAdmin = new Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential).setApplicationName("Kiwi")
 					.build();
@@ -98,6 +99,10 @@ public class GoogleCalendarResource {
 		Event patched = calendarAdmin.events().patch("primary", eventId, changes).execute();
 		log.log(Level.FINE, "Repo URL saved: " + patched.getExtendedProperties().getShared().get("repoUrl"));
 		log.log(Level.FINE, "Hashtag saved: " + patched.getExtendedProperties().getShared().get("hashtag"));
+	}
+	
+	public Event getEvent(String eventId) throws IOException {
+		return calendarAdmin.events().get("primary", eventId).execute();
 	}
 
 	public String getEventHashtag(String eventId) throws IOException {
