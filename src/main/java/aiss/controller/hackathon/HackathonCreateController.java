@@ -3,7 +3,6 @@ package aiss.controller.hackathon;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -74,6 +73,7 @@ public class HackathonCreateController extends HttpServlet {
 		GoogleCalendarResource calendar = new GoogleCalendarResource();
 		String eventId = calendar.createEvent(titulo, descripcion, localizacion, fechaInicio, fechaFin, correo);
 		calendar.saveEventData(eventId, repoResult.getUrl(), hashtag);
+		log.log(Level.FINE, "Hackathon created.");
 
 		// TODO: Segun los distintos redirigir a success o failure. Si una de las APIs
 		// falla,

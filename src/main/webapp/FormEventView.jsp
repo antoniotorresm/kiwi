@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@include file="includes/header.jsp"%>
 
 <body>
@@ -51,13 +53,13 @@
 						<div class="form-group">
 							<label for="startDate" class="control-label">Fecha de
 								Inicio: </label> <input type="datetime-local" id="startDate"
-								name="startDate" class="form-control" required />
+								name="startDate" class="form-control" required pattern="\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d" />
 						</div>
 
 						<div class="form-group">
 							<label for="endDate" class="control-label">Fecha de Fin:
 							</label> <input type="datetime-local" id="endDate" name="endDate"
-								class="form-control" required />
+								class="form-control" required pattern="\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d"/>
 						</div>
 					</fieldset>
 				</div>

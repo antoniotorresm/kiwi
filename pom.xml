@@ -156,12 +156,6 @@
 			<artifactId>google-api-services-calendar</artifactId>
 			<version>v3-rev260-1.23.0</version>
 		</dependency>
-		
-		<dependency>
-           <groupId>org.twitter4j</groupId>
-           <artifactId>twitter4j-core</artifactId>
-           <version>[4.0,)</version>
-       </dependency>
 
     <!-- Twitter4j -->
 		<dependency>
