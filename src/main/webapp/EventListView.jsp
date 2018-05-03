@@ -1,6 +1,7 @@
 <%@page import="com.google.api.services.calendar.model.Event"%>
 <%@page import="java.lang.*"%>
 <%@page import="java.util.List"%>
+<%@page import="com.google.api.services.calendar.model.Event"%>
 <%@include file="includes/header.jsp"%>
 <body>
 
@@ -35,8 +36,7 @@
 					</thead>
 					<tbody>
 						<%
-							List<Event> ls = (List<Event>) request.getAttribute("events");
-							for (Event e : ls) {
+							for (Event e : (List<Event>) request.getAttribute("events")) {
 						%>
 						<tr>
 							<td><%=e.getSummary()%></td>
