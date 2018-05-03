@@ -53,13 +53,15 @@
 						<div class="form-group">
 							<label for="startDate" class="control-label">Fecha de
 								Inicio: </label> <input type="datetime-local" id="startDate"
-								name="startDate" class="form-control" required pattern="\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d" />
+								name="startDate" class="form-control" required pattern="\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d"
+								placeholder="yyyy-MM-ddThh:mm" />
 						</div>
 
 						<div class="form-group">
 							<label for="endDate" class="control-label">Fecha de Fin:
 							</label> <input type="datetime-local" id="endDate" name="endDate"
-								class="form-control" required pattern="\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d"/>
+								class="form-control" required pattern="\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d"
+								placeholder="yyyy-MM-ddThh:mm"/>
 						</div>
 					</fieldset>
 				</div>
