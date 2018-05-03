@@ -25,4 +25,37 @@
 		<servlet-name>HackathonCreateController</servlet-name>
 		<url-pattern>/HackathonCreateController</url-pattern>
 	</servlet-mapping>
+	<!-- Google Oauth Servlets -->
+	<servlet>
+		<description></description>
+		<display-name>GoogleDriveAuthController</display-name>
+		<servlet-name>GoogleDriveAuthController</servlet-name>
+		<servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
+		<init-param>
+			<param-name>provider</param-name>
+			<param-value>Google</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GoogleDriveAuthController</servlet-name>
+		<url-pattern>/AuthController/Google</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>GoogleDriveOAuth2Callback</display-name>
+		<servlet-name>GoogleDriveOAuth2Callback</servlet-name>
+		<servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
+		<init-param>
+			<param-name>provider</param-name>
+			<param-value>Google</param-value>
+		</init-param>
+		<init-param>
+			<param-name>onSuccess</param-name>
+			<param-value>redirect:/helloworld</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GoogleDriveOAuth2Callback</servlet-name>
+		<url-pattern>/oauth2callback/Google</url-pattern>
+	</servlet-mapping>
 </web-app>

@@ -1,0 +1,11 @@
+{
+	"Google": {
+		"tokenUrl": "",
+		"clientId": "",
+		"clientSecret": "",
+		"authorizationFormUrl": "",
+		"scopes": [
+			"https://www.googleapis.com/auth/userinfo.email"
+		]
+	}
+}
