@@ -88,7 +88,9 @@ footer {
 				<h1>
 					<c:out value="${file.title}" />
 				</h1>
-				<p><c:out value="${file.description}" /></p>
+				<p>
+					<c:out value="${file.description}" />
+				</p>
 				<hr>
 				<h3>Test</h3>
 				<p>Lorem ipsum...</p>

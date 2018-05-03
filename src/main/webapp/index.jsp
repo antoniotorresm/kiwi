@@ -1,4 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@include file="includes/header.jsp"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Kiwi Hackathons</title>
+</head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
@@ -137,7 +146,7 @@
 		<div id="portfolio" class="container-fluid text-center bg-grey">
 			<h2>Miembros</h2>
 			<br>
-			<h4>Quien está detrás de kiwi</h4>
+			<h4>Quien está detrás de Kiwi</h4>
 			</br>
 			<div class="row text-center slideanim">
 				<div class="col-sm-3">
@@ -196,3 +205,4 @@
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
 	<%@include file="includes/footer.jsp"%>
+	<!-- Por alguna razón las etiquetas body y html se cierran en el footer.jsp... -->
