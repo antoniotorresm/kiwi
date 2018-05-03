@@ -1,150 +1,58 @@
+<%@page import="com.google.api.services.calendar.model.Event"%>
+<%@page import="java.lang.*"%>
+<%@page import="java.util.List"%>
 <%@include file="includes/header.jsp"%>
+<body>
 
-<c:forEach items="${requestScope.files.items}" var="file">
-	<tr>
-		<td><c:out value="${file.title}" /></td>
-		<td><c:out value="${file.fileSize}" /></td>
-		<td><c:out value="${file.modifiedDate}" /></td>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<span class="navbar-text"> 🥝 </span>
+		<ul class="navbar-nav">
 
+			<!-- IMPORTANTE REVISAR LINKS -->
 
-		<div class="container text-center">
-			<div class="row">
-				<div class="col-sm-3 well">
-					<div class="well">
-						<p>
-							<a href="#">My Profile</a>
-						</p>
-						<img src="bird.jpg" class="img-circle" height="65" width="65"
-							alt="Avatar">
-					</div>
-					<div class="well">
-						<p>
-							<a href="#">Interests</a>
-						</p>
-						<p>
-							<span class="label label-default">News</span> <span
-								class="label label-primary">W3Schools</span> <span
-								class="label label-success">Labels</span> <span
-								class="label label-info">Football</span> <span
-								class="label label-warning">Gaming</span> <span
-								class="label label-danger">Friends</span>
-						</p>
-					</div>
-					<div class="alert alert-success fade in">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">�</a>
-						<p>
-							<strong>Ey!</strong>
-						</p>
-						People are looking at your profile. Find out who.
-					</div>
-					<p>
-						<a href="#">Link</a>
-					</p>
-					<p>
-						<a href="#">Link</a>
-					</p>
-					<p>
-						<a href="#">Link</a>
-					</p>
-				</div>
-				<div class="col-sm-7">
+			<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+			<li class="nav-item"><a class="nav-link" href="event_list.jsp">Explore</a></li>
+			<li class="nav-item"><a class="nav-link" href="form_event.html">Create</a></li>
+		</ul>
+	</nav>
 
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="panel panel-default text-left">
-								<div class="panel-body">
-									<p contenteditable="true">Status: Feeling Blue</p>
-									<button type="button" class="btn btn-default btn-sm">
-										<span class="glyphicon glyphicon-thumbs-up"></span> Like
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
+	<div class="jumbotron text-center">
+		<h1>🥝 KIWI 🥝</h1>
+		<p>Mashup de herramientas indispensables para una organización
+			impecable de hackathones! 👌</p>
+	</div>
 
-					<div class="row">
-						<div class="col-sm-3">
-							<div class="well">
-								<p>John</p>
-								<img src="bird.jpg" class="img-circle" height="55" width="55"
-									alt="Avatar">
-							</div>
-						</div>
-						<div class="col-sm-9">
-							<div class="well">
-								<p>Just Forgot that I had to mention something about someone
-									to someone about how I forgot something, but now I forgot it.
-									Ahh, forget it! Or wait. I remember.... no I don't.</p>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-3">
-							<div class="well">
-								<p>Bo</p>
-								<img src="bandmember.jpg" class="img-circle" height="55"
-									width="55" alt="Avatar">
-							</div>
-						</div>
-						<div class="col-sm-9">
-							<div class="well">
-								<p>Just Forgot that I had to mention something about someone
-									to someone about how I forgot something, but now I forgot it.
-									Ahh, forget it! Or wait. I remember.... no I don't.</p>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-3">
-							<div class="well">
-								<p>Jane</p>
-								<img src="bandmember.jpg" class="img-circle" height="55"
-									width="55" alt="Avatar">
-							</div>
-						</div>
-						<div class="col-sm-9">
-							<div class="well">
-								<p>Just Forgot that I had to mention something about someone
-									to someone about how I forgot something, but now I forgot it.
-									Ahh, forget it! Or wait. I remember.... no I don't.</p>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-3">
-							<div class="well">
-								<p>Anja</p>
-								<img src="bird.jpg" class="img-circle" height="55" width="55"
-									alt="Avatar">
-							</div>
-						</div>
-						<div class="col-sm-9">
-							<div class="well">
-								<p>Just Forgot that I had to mention something about someone
-									to someone about how I forgot something, but now I forgot it.
-									Ahh, forget it! Or wait. I remember.... no I don't.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-2 well">
-					<div class="thumbnail">
-						<p>Upcoming Events:</p>
-						<img src="paris.jpg" alt="Paris" width="400" height="300">
-						<p>
-							<strong>Paris</strong>
-						</p>
-						<p>Fri. 27 November 2015</p>
-						<button class="btn btn-primary">Info</button>
-					</div>
-					<div class="well">
-						<p>ADS</p>
-					</div>
-					<div class="well">
-						<p>ADS</p>
-					</div>
-				</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Título</th>
+							<th>Localización</th>
+							<th>Detalles</th>
+						<tr>
+					</thead>
+					<tbody>
+						<%
+							List<Event> ls = (List<Event>) request.getAttribute("events");
+							for (Event e : ls) {
+						%>
+						<tr>
+							<td><%=e.getSummary()%></td>
+							<td><%=e.getLocation()%></td>
+							<td><a href="HackathonViewController.java"
+								class="btn btn-dark" role="button"
+								onclick="<%request.setAttribute("eventId", e.getId());%>">Ir
+									al sitio</a></td>
+						</tr>
+						<%
+							}
+						%>
+					</tbody>
+				</table>
 			</div>
 		</div>
+	</div>
 
-		<%@include file="includes/footer.jsp"%>
+	<%@include file="includes/footer.jsp"%>

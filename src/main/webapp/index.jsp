@@ -26,7 +26,7 @@
 		style="padding-top: 7%; padding-bottom: 7%">
 		<div class="jumbotron text-center">
 			<h1>🥝KIWI🥝</h1>
-			<p>Mashup de herramientas indispensables para una organización
+			<p>Mashup de herramientas indispensables para una organizaciÃ³n
 				impecable de hackathones! 👌</p>
 		</div>
 
@@ -41,7 +41,7 @@
 				<p>KIWI auna todo lo que necesitas para empezar un hackathon,
 					desde integración con servicios de calendarios pasando por
 					repositorios de Github y redes sociales para que tu evento sea
-					fácil de organizar y llegue a todas partes.</p>
+					fÃ¡cil de organizar y llegue a todas partes.</p>
 			</div>
 		</div>
 	</div>
@@ -104,11 +104,11 @@
 				<p>En esta sección podrás explorar todos los eventos disponibles
 					en nuestra aplicación e inscribirte en el que más te interese. ¡No
 					te pierdas el próximo hackathon!</p>
-				<a href="./event_list.jsp" class="btn btn-dark" role="button">Ir
+				<a href="./EventListView.jsp" class="btn btn-dark" role="button">Ir
 					al sitio</a>
 			</div>
 			<div class="col-lg-4">
-				<a href="./event_list.jsp"><img alt="explore"
+				<a href="./EventListView.jsp"><img alt="explore"
 					src="./img/explore.jpg" width="100%" height=auto></a>
 			</div>
 		</div>
@@ -121,7 +121,7 @@
 
 		<div class="row">
 			<div class="col-lg-4">
-				<a href="./form_event.html"><img alt="explore"
+				<a href="./FormEventView.jsp"><img alt="explore"
 					src="./img/create.jpg" width="100%" height=auto></a>
 			</div>
 			<div class="col-lg-8 border border-danger rounded"
@@ -132,7 +132,7 @@
 					pudiendo disfrutar de las facilidades de la creación automatizada
 					de parte de Kiwi de un repositorio propio en GitHub y un evento en
 					Google Calendar.</p>
-				<a href="./form_event.html" class="btn btn-dark" role="button">Ir
+				<a href="./FormEventView.jsp" class="btn btn-dark" role="button">Ir
 					al sitio</a>
 			</div>
 
@@ -154,7 +154,7 @@
 						<img class="card-img-top" src="./img/atorresm.jpg"
 							alt="Card image" style="width: 100%">
 						<div class="card-img-overlay">
-							<h4 class="card-title">Antonio Torres Moríñigo</h4>
+							<h4 class="card-title">Antonio Torres Moriñigo</h4>
 						</div>
 					</div>
 				</div>
@@ -163,7 +163,7 @@
 						<img class="card-img-top" src="./img/JMGuisadoG.jpg"
 							alt="Card image" style="width: 100%">
 						<div class="card-img-overlay">
-							<h4 class="card-title" style="color: #f2f2f2;">José María
+							<h4 class="card-title" style="color: #f2f2f2;">José Marí­a
 								Guisado Gómez</h4>
 						</div>
 					</div>

@@ -65,9 +65,9 @@ footer {
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">Explorar</a></li>
-					<li><a href="#">Crear</a></li>
+					<li class="active"><a href="index.jsp">Home</a></li>
+					<li><a href="EventListView.jsp">Explorar</a></li>
+					<li><a href="FormEventView.jsp">Crear</a></li>
 				</ul>
 			</div>
 		</div>

@@ -8,9 +8,9 @@
 
 			<!-- IMPORTANTE REVISAR LINKS -->
 
-			<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-			<li class="nav-item"><a class="nav-link" href="event_list.jsp">Explore</a></li>
-			<li class="nav-item"><a class="nav-link" href="form_event.html">Create</a></li>
+			<li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
+			<li class="nav-item"><a class="nav-link" href="EventListView.jsp">Explore</a></li>
+			<li class="nav-item"><a class="nav-link" href="FormEventView.jsp">Create</a></li>
 		</ul>
 	</nav>
 
