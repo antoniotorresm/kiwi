@@ -26,7 +26,7 @@
 		style="padding-top: 7%; padding-bottom: 7%">
 		<div class="jumbotron text-center">
 			<h1>🥝KIWI🥝</h1>
-			<p>Mashup de herramientas indispensables para una organizaciÃ³n
+			<p>Mashup de herramientas indispensables para una organización
 				impecable de hackathones! 👌</p>
 		</div>
 
@@ -41,7 +41,7 @@
 				<p>KIWI auna todo lo que necesitas para empezar un hackathon,
 					desde integración con servicios de calendarios pasando por
 					repositorios de Github y redes sociales para que tu evento sea
-					fÃ¡cil de organizar y llegue a todas partes.</p>
+					fácil de organizar y llegue a todas partes.</p>
 			</div>
 		</div>
 	</div>
