@@ -25,24 +25,4 @@
 		<servlet-name>HackathonCreateController</servlet-name>
 		<url-pattern>/HackathonCreateController</url-pattern>
 	</servlet-mapping>
-	<servlet>
-		<description></description>
-		<display-name>GoogleCalendarController</display-name>
-		<servlet-name>GoogleCalendarController</servlet-name>
-		<servlet-class>aiss.controller.hackathon.GoogleCalendarController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>GoogleCalendarController</servlet-name>
-		<url-pattern>/GoogleCalendarController</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<description></description>
-		<display-name>HackathonListViewController</display-name>
-		<servlet-name>HackathonListViewController</servlet-name>
-		<servlet-class>aiss.controller.hackathon.HackathonListViewController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>HackathonListViewController</servlet-name>
-		<url-pattern>/HackathonListViewController</url-pattern>
-	</servlet-mapping>
 </web-app>
