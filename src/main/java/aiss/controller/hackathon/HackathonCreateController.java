@@ -61,6 +61,9 @@ public class HackathonCreateController extends HttpServlet {
 		String hashtag = request.getParameter("hashtag");
 
 		// TODO: Validaciones
+		if (fechaFin.isBefore(fechaInicio)) {
+			request.getRequestDispatcher("/Error.jsp").forward(request, response);
+		}
 
 		// TODO: Usar recursos de las distintas APIS
 		// GitHub
