@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import aiss.model.google.GoogleUser;
+import aiss.model.resource.GoogleUserResource;
+
 public class HelloWorldServlet extends HttpServlet {
 
 	/**
@@ -41,5 +44,19 @@ public class HelloWorldServlet extends HttpServlet {
 		// // TODO Auto-generated catch block
 		// e.printStackTrace();
 		// }
+		// Google User API test
+		String accessToken = (String) req.getSession().getAttribute("Google-token");
+		if (accessToken != null && !"".equals(accessToken)) {
+			log.info("Access token available");
+			// access token available
+			resp.getWriter().println("Access token: " + accessToken);
+			GoogleUserResource ur = new GoogleUserResource(accessToken);
+			GoogleUser user = ur.getLoggedUser();
+			resp.getWriter().println("Current logged in user email: " + user.getEmail());
+		} else {
+			// no access token, redirect to oauth servlet
+			log.info("Trying to access Google without access token");
+			req.getRequestDispatcher("/AuthController/Google").forward(req, resp);
+		}
 	}
 }

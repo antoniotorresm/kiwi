@@ -28,8 +28,8 @@
 	<!-- Google Oauth Servlets -->
 	<servlet>
 		<description></description>
-		<display-name>GoogleDriveAuthController</display-name>
-		<servlet-name>GoogleDriveAuthController</servlet-name>
+		<display-name>GoogleAuthController</display-name>
+		<servlet-name>GoogleAuthController</servlet-name>
 		<servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
 		<init-param>
 			<param-name>provider</param-name>
@@ -37,13 +37,13 @@
 		</init-param>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>GoogleDriveAuthController</servlet-name>
+		<servlet-name>GoogleAuthController</servlet-name>
 		<url-pattern>/AuthController/Google</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<description></description>
-		<display-name>GoogleDriveOAuth2Callback</display-name>
-		<servlet-name>GoogleDriveOAuth2Callback</servlet-name>
+		<display-name>GoogleOAuth2Callback</display-name>
+		<servlet-name>GoogleOAuth2Callback</servlet-name>
 		<servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
 		<init-param>
 			<param-name>provider</param-name>
@@ -55,7 +55,7 @@
 		</init-param>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>GoogleDriveOAuth2Callback</servlet-name>
+		<servlet-name>GoogleOAuth2Callback</servlet-name>
 		<url-pattern>/oauth2callback/Google</url-pattern>
 	</servlet-mapping>
 </web-app>
