@@ -3,19 +3,16 @@
 <%@include file="includes/header.jsp"%>
 
 <body>
-
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<span class="navbar-text"> 🥝 </span>
 		<ul class="navbar-nav">
-
-			<!-- IMPORTANTE REVISAR LINKS -->
-
 			<li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
-			<li class="nav-item"><a class="nav-link" href="EventListView.jsp">Explore</a></li>
-			<li class="nav-item"><a class="nav-link" href="FormEventView.jsp">Create</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="EventListView.jsp">Explorar</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="FormEventView.jsp">Crear</a></li>
 		</ul>
 	</nav>
-
 	<div class="jumbotron text-center">
 		<h1>🥝KIWI🥝</h1>
 		<p>Mashup de herramientas indispensables para una organización
@@ -53,15 +50,17 @@
 						<div class="form-group">
 							<label for="startDate" class="control-label">Fecha de
 								Inicio: </label> <input type="datetime-local" id="startDate"
-								name="startDate" class="form-control" required pattern="\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d"
+								name="startDate" class="form-control" required
+								pattern="\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d"
 								placeholder="yyyy-MM-ddThh:mm" />
 						</div>
 
 						<div class="form-group">
 							<label for="endDate" class="control-label">Fecha de Fin:
 							</label> <input type="datetime-local" id="endDate" name="endDate"
-								class="form-control" required pattern="\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d"
-								placeholder="yyyy-MM-ddThh:mm"/>
+								class="form-control" required
+								pattern="\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d"
+								placeholder="yyyy-MM-ddThh:mm" />
 						</div>
 					</fieldset>
 				</div>
@@ -113,5 +112,4 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
-
 	<%@include file="includes/footer.jsp"%>

@@ -21,7 +21,6 @@
 			<li class="nav-item"><a class="nav-link" href="#section5">About</a></li>
 		</ul>
 	</nav>
-
 	<div id="section1" class="container-fluid"
 		style="padding-top: 7%; padding-bottom: 7%">
 		<div class="jumbotron text-center">
