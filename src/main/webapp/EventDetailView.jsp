@@ -72,10 +72,9 @@ footer {
 			</div>
 		</div>
 	</nav>
-
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<div class="col-sm-2 sidenav">
+			<div class="col-lg-2 sidenav">
 				<p>TWITTER</p>
 				<p>
 					<a href="#">Link</a>
@@ -84,7 +83,7 @@ footer {
 					<a href="#">Link</a>
 				</p>
 			</div>
-			<div class="col-sm-8 text-left">
+			<div class="col-lg-8 text-left">
 				<h1>
 					<c:out value="${file.title}" />
 				</h1>
@@ -95,7 +94,7 @@ footer {
 				<h3>Test</h3>
 				<p>Lorem ipsum...</p>
 			</div>
-			<div class="col-sm-2 sidenav">
+			<div class="col-lg-2 sidenav">
 				<p>GOOGLE CALENDAR</p>
 				<div class="well">
 					<p>Information related to google</p>

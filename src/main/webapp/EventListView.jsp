@@ -8,12 +8,11 @@
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<span class="navbar-text"> 🥝 </span>
 		<ul class="navbar-nav">
-
-			<!-- IMPORTANTE REVISAR LINKS -->
-
-			<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-			<li class="nav-item"><a class="nav-link" href="event_list.jsp">Explore</a></li>
-			<li class="nav-item"><a class="nav-link" href="form_event.html">Create</a></li>
+			<li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="EventListView.jsp">Explorar</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="FormEventView.jsp">Crear</a></li>
 		</ul>
 	</nav>
 
@@ -35,20 +34,16 @@
 						<tr>
 					</thead>
 					<tbody>
-						<%
-							for (Event e : (List<Event>) request.getAttribute("events")) {
-						%>
-						<tr>
-							<td><%=e.getSummary()%></td>
-							<td><%=e.getLocation()%></td>
-							<td><a href="HackathonViewController.java"
-								class="btn btn-dark" role="button"
-								onclick="<%request.setAttribute("eventId", e.getId());%>">Ir
-									al sitio</a></td>
-						</tr>
-						<%
-							}
-						%>
+						<c:forEach items="${requestScope.events}" var="e">
+							<tr>
+								<td><c:out value="${e.getSummary()}" /></td>
+								<td><c:out value="${e.getLocation()}" /></td>
+								<td><a href="HackathonViewController.java"
+									class="btn btn-dark" role="button"
+									onclick="<c:set var="eventId" scope="session" value="${e.getId()}"/> ">Ir
+										al sitio</a></td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
