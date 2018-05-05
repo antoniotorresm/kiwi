@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.restlet.resource.ResourceException;
+
 import aiss.model.github.InviteCollaboratorResult;
 import aiss.model.github.RepositoryCreateResult;
 import aiss.model.resource.GithubResource;
@@ -67,13 +69,37 @@ public class HackathonCreateController extends HttpServlet {
 		// TODO: Usar recursos de las distintas APIS
 		// GitHub
 		GithubResource github = new GithubResource();
-		RepositoryCreateResult repoResult = github.createRepository(nombreRepositorio);
-		InviteCollaboratorResult invResult = github.inviteCollaborator(nombreRepositorio, usuarioGithub);
-		// Google Calendar
-		GoogleCalendarResource calendar = new GoogleCalendarResource();
-		String eventId = calendar.createEvent(titulo, descripcion, localizacion, fechaInicio, fechaFin, correo);
-		calendar.saveEventData(eventId, repoResult.getUrl(), hashtag);
-		log.log(Level.FINE, "Hackathon created.");
+		RepositoryCreateResult repoResult = null;
+		try {
+			repoResult = github.createRepository(nombreRepositorio);
+
+			InviteCollaboratorResult invResult = github.inviteCollaborator(nombreRepositorio, usuarioGithub);
+			// Google Calendar
+			GoogleCalendarResource calendar = new GoogleCalendarResource();
+			String eventId = calendar.createEvent(titulo, descripcion, localizacion, fechaInicio, fechaFin, correo);
+			calendar.saveEventData(eventId, repoResult.getUrl(), hashtag);
+			log.log(Level.FINE, "Hackathon created.");
+
+		} catch(ResourceException ex) {
+			// TODO: Set valid form data
+
+			if(ex.getStatus().getCode() == 422) {
+				request.setAttribute("githubError", "422");
+			} else {
+				request.setAttribute("reponamegithub", nombreRepositorio);
+			}
+
+			request.setAttribute("title", titulo);
+			request.setAttribute("description", descripcion);
+			request.setAttribute("location", localizacion);
+			request.setAttribute("startDate", request.getParameter("startDate"));
+			request.setAttribute("endDate", request.getParameter("endDate"));
+			request.setAttribute("usernamegithub", usuarioGithub);
+			request.setAttribute("email", correo);
+			request.setAttribute("hashtag", hashtag);
+
+			request.getRequestDispatcher("/FormEventView.jsp").forward(request, response);
+		}
 
 		// TODO: Segun los distintos redirigir a success o failure. Si una de las APIs
 		// falla,

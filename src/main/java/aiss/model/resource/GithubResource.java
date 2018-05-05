@@ -12,6 +12,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.restlet.resource.ResourceException;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -68,7 +69,7 @@ public class GithubResource {
 	 * @return Returns a POJO with the representation of the response body
 	 */
 	public RepositoryCreateResult createRepository(String name) {
-		if(name == null) {
+		if (name == null) {
 			throw new NullPointerException("Name string of the new repository can't be null");
 		}
 
@@ -88,6 +89,13 @@ public class GithubResource {
 
 			// Send request and get the response (headers and body)
 			HttpResponse resp = client.execute(request);
+
+			// If we receive a 422 status code, repo name is already being used
+			if (resp.getStatusLine().getStatusCode() == 422) {
+				log.log(Level.WARNING, "Tried to create repository with used name " + name);
+				throw new ResourceException(422, "Repo name already used");
+			}
+
 			log.log(Level.INFO, "POST sent to create a new kiwi repository with name " + name);
 			// Extract the body from the response
 			String jsonResponseBody = IOUtils.toString(resp.getEntity().getContent());

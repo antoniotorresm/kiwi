@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="includes/header.jsp"%>
 
 <body>
@@ -19,7 +20,13 @@
 			impecable de hackathones! 👌</p>
 	</div>
 
-
+	<c:if test="<%=request.getAttribute(\"githubError\") != null
+						&& request.getAttribute(\"githubError\").equals(\"422\")%>">
+		<div class="alert alert-warning text-center">
+			<strong>Cuidado, vaquero informático❕</strong> Has usado un nombre
+			para el repositorio que ya está siendo usado.
+		</div>
+	</c:if>
 
 	<div class="container">
 		<form id="insertEvent" method="POST"
@@ -32,18 +39,21 @@
 						<div class="form-group">
 							<label for="title" class="control-label">Título del
 								Hackathon: </label> <input id="title" name="title" type="text"
-								class="form-control" required>
+								value="<c:out value="${title}" />"
+								class="form-control" required />
 						</div>
 
 						<div class="form-group">
 							<label for="description" class="control-label">Descripción:
 							</label> <input id="description" name="description" type="text"
+								value="<c:out value="${description}" />"
 								class="form-control" required />
 						</div>
 
 						<div class="form-group">
 							<label for="location" class="control-label">Localización:
 							</label> <input id="location" name="location" type="text"
+								value="<c:out value="${location}" />"
 								class="form-control" required />
 						</div>
 
@@ -51,6 +61,7 @@
 							<label for="startDate" class="control-label">Fecha de
 								Inicio: </label> <input type="datetime-local" id="startDate"
 								name="startDate" class="form-control" required
+								value="<c:out value="${startDate}" />"
 								pattern="\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d"
 								placeholder="yyyy-MM-ddThh:mm" />
 						</div>
@@ -59,6 +70,7 @@
 							<label for="endDate" class="control-label">Fecha de Fin:
 							</label> <input type="datetime-local" id="endDate" name="endDate"
 								class="form-control" required
+								value="<c:out value="${endDate}" />"
 								pattern="\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d"
 								placeholder="yyyy-MM-ddThh:mm" />
 						</div>
@@ -70,12 +82,16 @@
 						<div class="form-group">
 							<label for="usernamegithub" class="control-label">Nombre
 								usuario GitHub: </label> <input id="usernamegithub"
-								name="usernamegithub" type="text" class="form-control" required>
+								name="usernamegithub" type="text"
+								value="<c:out value="${usernamegithub}" />"
+								class="form-control" required>
 						</div>
 						<div class="form-group">
 							<label for="reponamegithub" class="control-label">Nombre
 								repositorio GitHub: </label> <input id="reponamegithub"
-								name="reponamegithub" type="text" class="form-control" required>
+								name="reponamegithub"
+								value="<c:out value="${reponamegithub}" />"
+								type="text" class="form-control" required>
 						</div>
 					</fieldset>
 
@@ -84,11 +100,12 @@
 						<div class="form-group">
 							<label for="email" class="control-label">Correo
 								Electrónico: </label> <input id="email" name="email" type="email"
-								class="form-control" required>
+								value="<c:out value="${email}" />" class="form-control" required>
 						</div>
 						<div class="form-group">
 							<label for="hashtag" class="control-label">Hashtag: </label> <input
 								id="hashtag" name="hashtag" type="text"
+								value="<c:out value="${hashtag}" />"
 								pattern="\B(\#[a-zA-Z]+\b)(?!;)" class="form-control" required>
 						</div>
 					</fieldset>
