@@ -1,8 +1,8 @@
-<%@page import="com.google.api.services.calendar.model.Event"%>
-<%@page import="java.lang.*"%>
-<%@page import="java.util.List"%>
-<%@page import="com.google.api.services.calendar.model.Event"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@include file="includes/header.jsp"%>
+<%@page import="java.util.Date"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <body>
 
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -30,6 +30,8 @@
 						<tr>
 							<th>Título</th>
 							<th>Localización</th>
+							<th>Fecha inicio</th>
+							<th>Fecha fin</th>
 							<th>Detalles</th>
 						<tr>
 					</thead>
@@ -38,9 +40,11 @@
 							<tr>
 								<td><c:out value="${e.getSummary()}" /></td>
 								<td><c:out value="${e.getLocation()}" /></td>
+								<td><c:out value="${e.getStart().getDate()}" /></td>
+								<td><c:out value="${e.getEnd().getDate()}" /></td>
 								<td><a href="HackathonViewController.java"
 									class="btn btn-dark" role="button"
-									onclick="<c:set var="eventId" scope="session" value="${e.getId()}"/> ">Ir
+									onclick="<c:set var="eventId" scope="request" value="${e.getId()}"/> ">Ir
 										al sitio</a></td>
 							</tr>
 						</c:forEach>

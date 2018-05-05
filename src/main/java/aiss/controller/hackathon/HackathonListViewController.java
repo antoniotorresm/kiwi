@@ -1,9 +1,11 @@
 package aiss.controller.hackathon;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +40,14 @@ public class HackathonListViewController extends HttpServlet {
 
 		// Load all events
 		GoogleCalendarResource gcr = new GoogleCalendarResource();
-		List<Event> events = gcr.getEvents().getItems();
+		List<Event> events = new ArrayList<>();
+
+		for (Event e : gcr.getEvents().getItems()) {
+			if (com.google.appengine.repackaged.org.joda.time.DateTime.now()
+					.isAfter(e.getEnd().getDateTime().getValue())) {
+				events.add(e);
+			}
+		}
 
 		if (events.isEmpty()) {
 			request.setAttribute("message", "There're no events.");

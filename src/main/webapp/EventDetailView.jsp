@@ -13,43 +13,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
-/* Remove the navbar's default margin-bottom and rounded borders */
-.navbar {
-	margin-bottom: 0;
-	border-radius: 0;
-}
-
-/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {
-	height: 450px
-}
-
-/* Set gray background color and 100% height */
-.sidenav {
-	padding-top: 20px;
-	background-color: #f1f1f1;
-	height: 100%;
-}
-
-/* Set black background color, white text and some padding */
-footer {
-	background-color: #555;
-	color: white;
-	padding: 15px;
-}
-
-/* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
-	.sidenav {
-		height: auto;
-		padding: 15px;
-	}
-	.row.content {
-		height: auto;
-	}
-}
-</style>
 </head>
 <body>
 
@@ -61,7 +24,7 @@ footer {
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"> 🥝 </a>
+				<a class="navbar-brand" href="index.jsp"> 🥝 </a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
@@ -75,33 +38,68 @@ footer {
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<div class="col-lg-2 sidenav">
-				<p>TWITTER</p>
-				<p>
-					<a href="#">Link</a>
-				</p>
-				<p>
-					<a href="#">Link</a>
-				</p>
+				<p>TWEETS</p>
+				<div class="container">
+					<table class="table table-hover">
+						<c:forEach items="${requestScope.listTweets}" var="t">
+							<tr>
+								<td><c:out value="${t.getText()}" /></td>
+								<td><c:out value="${e.getUser()}" /></td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+
 			</div>
 			<div class="col-lg-8 text-left">
+				<c:set var="eventId" scope="request"
+					value="${requestScope.event.getId()}" />
 				<h1>
-					<c:out value="${file.title}" />
+					<c:out value="${requestScope.event.getSummary()}" />
 				</h1>
-				<p>
-					<c:out value="${file.description}" />
-				</p>
 				<hr>
-				<h3>Test</h3>
-				<p>Lorem ipsum...</p>
+				<h3>Detalles</h3>
+				<h5>Descripción:</h5>
+				<h6>
+					<c:out value="${requestScope.event.getDescription()}" />
+				</h6>
+				<h5># Hashtag:</h5>
+				<h6>
+
+					<c:out value="${requestScope.hashtag}" />
+				</h6>
+				<h5>Repositorio en GitHub:</h5>
+				<h6>
+					<a href="<c:out value="${requestScope.eventRepoUrl}" />"><c:out
+							value="${requestScope.eventRepoUrl}" /></a>
+				</h6>
+				<c:if test="${!requestScope.joined}">
+					<a href="HackathonJoinController.java"
+						class="btn btn-dark btn-block" role="button"
+						onclick="<c:set var="joined" scope="request"
+						value="true"/>">Únete</a>
+				</c:if>
 			</div>
 			<div class="col-lg-2 sidenav">
-				<p>GOOGLE CALENDAR</p>
+				<p>CALENDAR</p>
 				<div class="well">
-					<p>Information related to google</p>
+					<h5>Localización:</h5>
+					<h6>
+						<c:out value="${requestScope.event.getDescription()}" />
+					</h6>
+					<h5>Fecha inicio:</h5>
+					<h6>
+						<c:out value="${requestScope.event.getStart().getDate()}" />
+					</h6>
+					<h5>Fecha fin:</h5>
+					<h6>
+						<c:out value="${requestScope.event.getEnd().getDate()}" />
+					</h6>
 				</div>
-				<c:if test='${empty sessionScope["token"]}'>
+				<c:if test='${requestScope.joined}'>
 					<div class="well">
-						<p>Optional box -> joined!</p>
+						<button type="button" class="btn btn-success btn-block">¡Tu
+							invitación ha sido enviada!</button>
 					</div>
 				</c:if>
 			</div>

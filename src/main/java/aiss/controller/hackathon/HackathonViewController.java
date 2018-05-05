@@ -64,11 +64,13 @@ public class HackathonViewController extends HttpServlet {
 		List<Status> listTweets = new ArrayList<>();
 		try {
 			TwitterResource tweet = new TwitterResource();
-			listTweets.addAll(tweet.query(hashtag));
+			// listTweets.addAll(tweet.query(hashtag));
+			for (int i = 0; i < 10; i++) {
+				listTweets.add(tweet.query(hashtag).get(i));
+			}
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
-
 		// Forward to event view
 		request.setAttribute("listTweets", listTweets);
 		request.setAttribute("event", event);
