@@ -25,6 +25,16 @@
 		<servlet-name>HackathonCreateController</servlet-name>
 		<url-pattern>/HackathonCreateController</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>HackathonListController</display-name>
+		<servlet-name>HackathonListController</servlet-name>
+		<servlet-class>aiss.controller.hackathon.HackathonListViewController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HackathonListController</servlet-name>
+		<url-pattern>/HackathonListController</url-pattern>
+	</servlet-mapping>
 	<!-- Google Oauth Servlets -->
 	<servlet>
 		<description></description>

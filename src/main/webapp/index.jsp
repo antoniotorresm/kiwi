@@ -103,11 +103,11 @@
 				<p>En esta sección podrás explorar todos los eventos disponibles
 					en nuestra aplicación e inscribirte en el que más te interese. ¡No
 					te pierdas el próximo hackathon!</p>
-				<a href="./EventListView.jsp" class="btn btn-dark" role="button">Ir
+				<a href="/HackathonListController" class="btn btn-dark" role="button">Ir
 					al sitio</a>
 			</div>
 			<div class="col-lg-4">
-				<a href="./EventListView.jsp"><img alt="explore"
+				<a href="/HackathonListController"><img alt="explore"
 					src="./img/explore.jpg" width="100%" height=auto></a>
 			</div>
 		</div>
