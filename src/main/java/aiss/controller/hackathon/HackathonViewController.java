@@ -42,7 +42,7 @@ public class HackathonViewController extends HttpServlet {
 
 		// Load Google Calendar information
 		GoogleCalendarResource gcr = new GoogleCalendarResource();
-		String eventId = (String) request.getAttribute("eventId");
+		String eventId = (String) request.getParameter("eventId");
 		log.log(Level.FINE, "Id=" + eventId);
 		Event event = null;
 		String hashtag = null;
@@ -64,8 +64,10 @@ public class HackathonViewController extends HttpServlet {
 			try {
 				TwitterResource tweet = new TwitterResource();
 				// listTweets.addAll(tweet.query(hashtag));
-				for (int i = 0; i < 10; i++) {
-					listTweets.add(tweet.query(hashtag).get(i));
+				int i = 0;
+				List<Status> queryResult = tweet.query(hashtag);
+				while (i < 10 && !(i >= queryResult.size())) {
+					listTweets.add(queryResult.get(i));
 				}
 			} catch (TwitterException e) {
 				e.printStackTrace();
