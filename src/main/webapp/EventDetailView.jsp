@@ -13,7 +13,7 @@
 						<c:forEach items="${requestScope.listTweets}" var="t">
 							<tr>
 								<td><c:out value="${t.getText()}" /></td>
-								<td><c:out value="${e.getUser()}" /></td>
+								<td><c:out value="${t.getUser()}" /></td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -42,12 +42,15 @@
 					<a href="<c:out value="${requestScope.eventRepoUrl}" />"><c:out
 							value="${requestScope.eventRepoUrl}" /></a>
 				</h6>
-				<c:if test="${!requestScope.joined}">
-					<a href="/HackathonJoinController" class="btn btn-dark btn-block"
-						role="button"
-						onclick="<c:set var="joined" scope="request"
-						value="true"/>">Únete</a>
-				</c:if>
+				<%
+					if (!request.getParameter("joined").equals("true")) {
+				%>
+				<a href="/HackathonJoinController" class="btn btn-dark btn-block"
+					role="button">Únete</a>
+				<%
+					}
+				%>
+
 			</div>
 			<div class="col-lg-2 sidenav">
 				<p>CALENDAR</p>
@@ -58,19 +61,26 @@
 					</h6>
 					<h5>Fecha inicio:</h5>
 					<h6>
-						<c:out value="${requestScope.event.getStart().getDateTime().toString()}" />
+						<c:out
+							value="${requestScope.event.getStart().getDateTime().toString()}" />
 					</h6>
 					<h5>Fecha fin:</h5>
 					<h6>
-						<c:out value="${requestScope.event.getEnd().getDateTime().toString()}" />
+						<c:out
+							value="${requestScope.event.getEnd().getDateTime().toString()}" />
 					</h6>
 				</div>
-				<c:if test='${requestScope.joined}'>
-					<div class="well">
-						<button type="button" class="btn btn-success btn-block">¡Tu
-							invitación ha sido enviada!</button>
-					</div>
-				</c:if>
+				<%
+					if (request.getParameter("joined").equals("true")) {
+				%>
+
+				<div class="well">
+					<button type="button" class="btn btn-success btn-block">¡Invitación
+						enviada!</button>
+				</div>
+				<%
+					}
+				%>
 			</div>
 		</div>
 	</div>

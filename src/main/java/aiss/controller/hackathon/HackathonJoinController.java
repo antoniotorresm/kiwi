@@ -37,7 +37,9 @@ public class HackathonJoinController extends HttpServlet {
 		if (accessToken != null && !"".equals(accessToken)) {
 			GoogleUserResource gu = new GoogleUserResource(accessToken);
 			gc.sendInvitationToUser(gu.getLoggedUser().getEmail(), (String) request.getAttribute("eventId"));
-			log.fine("User " + gu.getLoggedUser().getEmail() + " invited to event with id " + request.getAttribute("eventId"));
+			log.fine("User " + gu.getLoggedUser().getEmail() + " invited to event with id "
+					+ request.getAttribute("eventId"));
+			request.getRequestDispatcher("/EventDetailView?joined=true").forward(request, response);
 		} else {
 			// User not logged in
 			request.getRequestDispatcher("/Error.jsp").forward(request, response);

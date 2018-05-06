@@ -41,7 +41,7 @@
 								<td><c:out value="${e.getLocation()}" /></td>
 								<td><c:out value="${startDateHuman} ${startHourHuman}" /></td>
 								<td><c:out value="${endDateHuman} ${endHourHuman}" /></td>
-								<td><a href="/HackathonViewController?eventId=${e.getId()}" class="btn btn-dark"
+								<td><a href="/HackathonViewController?eventId=${e.getId()}&joined=false" class="btn btn-dark"
 									role="button">Ir al sitio</a></td>
 							</tr>
 						</c:forEach>
