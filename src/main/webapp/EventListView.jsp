@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="includes/header.jsp"%>
 <%@page import="java.util.Date"%>
+<%@page import="java.util.Calendar"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <body>
 
@@ -41,11 +42,16 @@
 					</thead>
 					<tbody>
 						<c:forEach items="${requestScope.events}" var="e">
+							<c:set var="startDateHuman" value="${e.getStart().getDateTime().toString().split("T")[0]}" />
+							<c:set var="startHourHuman" value="${e.getStart().getDateTime().toString().split("T")[1].split(":")[0]}:${e.getStart().getDateTime().toString().split("T")[1].split(":")[1]}" />
+							
+							<c:set var="endDateHuman" value="${e.getEnd().getDateTime().toString().split("T")[0]}" />
+							<c:set var="endHourHuman" value="${e.getEnd().getDateTime().toString().split("T")[1].split(":")[0]}:${e.getEnd().getDateTime().toString().split("T")[1].split(":")[1]}" />
 							<tr>
 								<td><c:out value="${e.getSummary()}" /></td>
 								<td><c:out value="${e.getLocation()}" /></td>
-								<td><c:out value="${e.getStart().getDateTime().toString()}" /></td>
-								<td><c:out value="${e.getEnd().getDateTime().toString()}" /></td>
+								<td><c:out value="${startDateHuman} ${startHourHuman}" /></td>
+								<td><c:out value="${endDateHuman} ${endHourHuman}" /></td>
 								<td><a href="HackathonViewController.java"
 									class="btn btn-dark" role="button"
 									onclick="<c:set var="eventId" scope="request" value="${e.getId()}"/> ">Ir
