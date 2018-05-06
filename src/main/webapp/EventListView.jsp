@@ -11,7 +11,7 @@
 		<ul class="navbar-nav">
 			<li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="EventListView.jsp">Explorar</a></li>
+				href="HackathonListController">Explorar</a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="FormEventView.jsp">Crear</a></li>
 		</ul>
