@@ -1,9 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="includes/header.jsp"%>
 <body>
-	<%@include file="includes/navbar.jsp"%>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+		<a class="navbar-brand" href="index.jsp">🥝 Kiwi API </a>
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link"
+				href="https://kiwi-aiss.appspot.com/index.jsp">Kiwi Hackathons</a></li>
+		</ul>
+	</nav>
 	<div class="container-fluid jumbotron text-center"
 		style="padding-top: 6%;">
-		<h1>🥝 KIWI API🥝</h1>
+		<h1>🥝 KIWI API 🥝</h1>
 		<p>Interfaz de programación de aplicaciones para la creación,
 			modificación y consulta de bibliotecas y libros 👌</p>
 	</div>
@@ -74,7 +83,7 @@
 		</div>
 
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-12">
 				<table class="table table-hover">
 					<thead>
 						<tr>
