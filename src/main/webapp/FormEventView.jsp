@@ -4,20 +4,7 @@
 <%@include file="includes/header.jsp"%>
 
 <body>
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-		<a class="navbar-brand" href="index.jsp">🥝 Kiwi</a>
-		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
-			<li class="nav-item"><a class="nav-link"
-				href="EventListView.jsp">Explorar</a></li>
-			<li class="nav-item"><a class="nav-link"
-				href="FormEventView.jsp">Crear</a></li>
-		</ul>
-		<ul class="navbar-nav ml-auto">
-			<li class="nav-item"><a class="btn btn-info" href="#"
-				role="button">Login</a></li>
-		</ul>
-	</nav>
+	<%@include file="includes/navbar.jsp"%>
 	<div class="jumbotron text-center">
 		<h1>🥝KIWI🥝</h1>
 		<p>Mashup de herramientas indispensables para una organización

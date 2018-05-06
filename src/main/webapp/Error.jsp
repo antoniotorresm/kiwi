@@ -1,9 +1,8 @@
 <%@include file="includes/header.jsp"%>
 <body>
+	<%@include file="includes/navbar.jsp" %>
 	<div class="jumbotron text-center">
 		<div class='col-100'>
-			<img alt="error image" src='/images/error.jpeg' width="70%"
-				height="auto"><br /> <br />
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<h3>

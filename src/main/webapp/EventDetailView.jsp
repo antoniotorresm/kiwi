@@ -15,30 +15,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#myNavbar">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="index.jsp"> 🥝 Kiwi</a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="index.jsp">Home</a></li>
-					<li><a href="EventListView.jsp">Explorar</a></li>
-					<li><a href="FormEventView.jsp">Crear</a></li>
-				</ul>
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="btn btn-info" href="#"
-						role="button">Login</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<%@include file="includes/navbar.jsp"%>
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<div class="col-lg-2 sidenav">
@@ -78,8 +55,8 @@
 							value="${requestScope.eventRepoUrl}" /></a>
 				</h6>
 				<c:if test="${!requestScope.joined}">
-					<a href="HackathonJoinController.java"
-						class="btn btn-dark btn-block" role="button"
+					<a href="/HackathonJoinController" class="btn btn-dark btn-block"
+						role="button"
 						onclick="<c:set var="joined" scope="request"
 						value="true"/>">Únete</a>
 				</c:if>

@@ -10,20 +10,7 @@
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-		<a class="navbar-brand" href="index.jsp">🥝 Kiwi</a>
-		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="#section1">Home</a></li>
-			<li class="nav-item"><a class="nav-link" href="#section2">Servicios</a></li>
-			<li class="nav-item"><a class="nav-link" href="#section3">Explorar</a></li>
-			<li class="nav-item"><a class="nav-link" href="#section4">Crear</a></li>
-			<li class="nav-item"><a class="nav-link" href="#section5">About</a></li>
-		</ul>
-		<ul class="navbar-nav ml-auto">
-			<li class="nav-item"><a class="btn btn-info" href="#"
-				role="button">Login</a></li>
-		</ul>
-	</nav>
+	<%@include file="includes/navbar.jsp" %>
 	<div id="section1" class="container-fluid"
 		style="padding-top: 7%; padding-bottom: 7%">
 		<div class="jumbotron text-center">
@@ -149,7 +136,6 @@
 			<h2>Miembros</h2>
 			<br>
 			<h4>Quien está detrás de Kiwi</h4>
-			</br>
 			<div class="row text-center slideanim">
 				<div class="col-sm-3">
 					<div class="card img-fluid" style="width: 500px">

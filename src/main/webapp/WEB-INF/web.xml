@@ -45,6 +45,16 @@
 		<servlet-name>HackathonJoinController</servlet-name>
 		<url-pattern>/HackathonJoinController</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>HackathonViewController</display-name>
+		<servlet-name>HackathonViewController</servlet-name>
+		<servlet-class>aiss.controller.hackathon.HackathonViewController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HackathonViewController</servlet-name>
+		<url-pattern>/HackathonViewController</url-pattern>
+	</servlet-mapping>
 	<!-- Google Oauth Servlets -->
 	<servlet>
 		<description></description>
@@ -71,7 +81,7 @@
 		</init-param>
 		<init-param>
 			<param-name>onSuccess</param-name>
-			<param-value>redirect:/helloworld</param-value>
+			<param-value>redirect:/index.jsp</param-value>
 		</init-param>
 	</servlet>
 	<servlet-mapping>
