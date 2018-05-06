@@ -5,11 +5,12 @@
 
 <body>
 	<%@include file="includes/navbar.jsp"%>
-	<div class="jumbotron text-center">
-		<h1>🥝KIWI🥝</h1>
-		<p>Mashup de herramientas indispensables para una organización
-			impecable de hackathones! 👌</p>
-	</div>
+		<div class="container-fluid jumbotron text-center"
+		style="padding-top: 6%; ">
+			<h1>🥝KIWI🥝</h1>
+			<p>Mashup de herramientas indispensables para una organización
+				impecable de hackathones! 👌</p>
+		</div>
 
 	<c:if
 		test="<%=request.getAttribute(\"githubError\") != null

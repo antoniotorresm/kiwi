@@ -6,7 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <body>
 	<%@include file="includes/navbar.jsp"%>
-	<div class="jumbotron text-center">
+	<div class="jumbotron text-center" style="padding-top: 6%;">
 		<h1>🥝KIWI🥝</h1>
 		<p>Mashup de herramientas indispensables para una organización
 			impecable de hackathones! 👌</p>

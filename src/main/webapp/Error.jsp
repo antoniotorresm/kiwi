@@ -1,7 +1,7 @@
 <%@include file="includes/header.jsp"%>
 <body>
 	<%@include file="includes/navbar.jsp" %>
-	<div class="jumbotron text-center">
+	<div class="jumbotron text-center" style="padding-top: 6%;">
 		<div class='col-100'>
 			<div class="panel panel-default">
 				<div class="panel-body">

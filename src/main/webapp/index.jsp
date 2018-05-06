@@ -11,13 +11,15 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 	<%@include file="includes/navbar.jsp" %>
-	<div id="section1" class="container-fluid"
-		style="padding-top: 7%; padding-bottom: 7%">
-		<div class="jumbotron text-center">
+	<div class="jumbotron text-center" style="padding-top: 6%;" >
 			<h1>🥝KIWI🥝</h1>
 			<p>Mashup de herramientas indispensables para una organización
 				impecable de hackathones! 👌</p>
 		</div>
+	
+	<div id="section1" class="container-fluid"
+		style="padding-top: 3%; padding-bottom: 3%">
+		
 
 		<div class="row">
 			<div class="col-lg-4">
