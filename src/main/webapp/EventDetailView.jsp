@@ -20,7 +20,7 @@
 				</div>
 
 			</div>
-			<div class="col-lg-8 text-left">
+			<div class="col-lg-8 text-left" style="padding-top: 6%">
 				<c:set var="eventId" scope="request"
 					value="${requestScope.event.getId()}" />
 				<h1>
@@ -52,7 +52,7 @@
 				%>
 
 			</div>
-			<div class="col-lg-2 sidenav">
+			<div class="col-lg-2 sidenav" style="padding-top: 6%;">
 				<p>CALENDAR</p>
 				<div class="well">
 					<h5>Localización:</h5>
