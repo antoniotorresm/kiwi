@@ -6,7 +6,7 @@
 	<%@include file="includes/navbar.jsp"%>
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<div class="col-lg-2 sidenav">
+			<div class="col-lg-2 sidenav" style="padding-top: 6%">
 				<p>TWEETS</p>
 				<div class="container">
 					<table class="table table-hover">
