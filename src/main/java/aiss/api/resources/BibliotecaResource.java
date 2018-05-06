@@ -25,7 +25,7 @@ import aiss.model.repository.BibliotecaRepository;
 import aiss.model.repository.Libro;
 import aiss.model.repository.MapBibliotecasRepository;
 
-@Path("/lists")
+@Path("/bibliotecas")
 public class BibliotecaResource {
 
 	/* Singleton */

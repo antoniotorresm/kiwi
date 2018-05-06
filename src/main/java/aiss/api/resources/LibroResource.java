@@ -24,7 +24,7 @@ import aiss.model.repository.BibliotecaRepository;
 import aiss.model.repository.Libro;
 import aiss.model.repository.MapBibliotecasRepository;
 
-@Path("/songs")
+@Path("/libros")
 public class LibroResource {
 
 	public static LibroResource _instance = null;
