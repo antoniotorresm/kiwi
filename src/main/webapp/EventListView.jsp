@@ -44,8 +44,8 @@
 							<tr>
 								<td><c:out value="${e.getSummary()}" /></td>
 								<td><c:out value="${e.getLocation()}" /></td>
-								<td><c:out value="${e.getStart().getDate()}" /></td>
-								<td><c:out value="${e.getEnd().getDate()}" /></td>
+								<td><c:out value="${e.getStart().getDateTime().toString()}" /></td>
+								<td><c:out value="${e.getEnd().getDateTime().toString()}" /></td>
 								<td><a href="HackathonViewController.java"
 									class="btn btn-dark" role="button"
 									onclick="<c:set var="eventId" scope="request" value="${e.getId()}"/> ">Ir
