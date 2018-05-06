@@ -113,9 +113,4 @@
 		<servlet-name>Resteasy</servlet-name>
 		<url-pattern>/api/*</url-pattern>
 	</servlet-mapping>
-
-	<!-- Default page to serve -->
-	<welcome-file-list>
-		<welcome-file>about.html</welcome-file>
-	</welcome-file-list>
 </web-app>

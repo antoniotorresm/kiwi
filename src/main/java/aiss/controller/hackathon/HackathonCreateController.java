@@ -67,7 +67,7 @@ public class HackathonCreateController extends HttpServlet {
 		}
 		String googleAccessToken = (String) request.getSession().getAttribute("Google-token");
 		if (googleAccessToken == null || "".equals(googleAccessToken)) {
-			request.getRequestDispatcher("/Error.jsp").forward(request, response);
+			request.getRequestDispatcher("/NotLoggedInError.jsp").forward(request, response);
 		}
 
 		// TODO: Usar recursos de las distintas APIS
