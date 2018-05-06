@@ -24,13 +24,17 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.jsp"> 🥝 </a>
+				<a class="navbar-brand" href="index.jsp"> 🥝 Kiwi</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="index.jsp">Home</a></li>
 					<li><a href="EventListView.jsp">Explorar</a></li>
 					<li><a href="FormEventView.jsp">Crear</a></li>
+				</ul>
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="btn btn-info" href="#"
+						role="button">Login</a></li>
 				</ul>
 			</div>
 		</div>

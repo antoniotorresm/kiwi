@@ -6,7 +6,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-		<span class="navbar-text"> 🥝 </span>
+		<a class="navbar-brand" href="index.jsp">🥝 Kiwi</a>
 		<ul class="navbar-nav">
 			<li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
 			<li class="nav-item"><a class="nav-link"
@@ -14,10 +14,14 @@
 			<li class="nav-item"><a class="nav-link"
 				href="FormEventView.jsp">Crear</a></li>
 		</ul>
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item"><a class="btn btn-info" href="#"
+				role="button">Login</a></li>
+		</ul>
 	</nav>
 
 	<div class="jumbotron text-center">
-		<h1>🥝 KIWI 🥝</h1>
+		<h1>🥝KIWI🥝</h1>
 		<p>Mashup de herramientas indispensables para una organización
 			impecable de hackathones! 👌</p>
 	</div>

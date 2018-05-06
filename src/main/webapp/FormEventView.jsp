@@ -5,13 +5,17 @@
 
 <body>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-		<span class="navbar-text"> 🥝 </span>
+		<a class="navbar-brand" href="index.jsp">🥝 Kiwi</a>
 		<ul class="navbar-nav">
 			<li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="EventListView.jsp">Explorar</a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="FormEventView.jsp">Crear</a></li>
+		</ul>
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item"><a class="btn btn-info" href="#"
+				role="button">Login</a></li>
 		</ul>
 	</nav>
 	<div class="jumbotron text-center">
@@ -20,7 +24,8 @@
 			impecable de hackathones! 👌</p>
 	</div>
 
-	<c:if test="<%=request.getAttribute(\"githubError\") != null
+	<c:if
+		test="<%=request.getAttribute(\"githubError\") != null
 						&& request.getAttribute(\"githubError\").equals(\"422\")%>">
 		<div class="alert alert-warning text-center">
 			<strong>Cuidado, vaquero informático❕</strong> Has usado un nombre
@@ -39,22 +44,21 @@
 						<div class="form-group">
 							<label for="title" class="control-label">Título del
 								Hackathon: </label> <input id="title" name="title" type="text"
-								value="<c:out value="${title}" />"
-								class="form-control" required />
+								value="<c:out value="${title}" />" class="form-control" required />
 						</div>
 
 						<div class="form-group">
 							<label for="description" class="control-label">Descripción:
 							</label> <input id="description" name="description" type="text"
-								value="<c:out value="${description}" />"
-								class="form-control" required />
+								value="<c:out value="${description}" />" class="form-control"
+								required />
 						</div>
 
 						<div class="form-group">
 							<label for="location" class="control-label">Localización:
 							</label> <input id="location" name="location" type="text"
-								value="<c:out value="${location}" />"
-								class="form-control" required />
+								value="<c:out value="${location}" />" class="form-control"
+								required />
 						</div>
 
 						<div class="form-group">
@@ -83,15 +87,15 @@
 							<label for="usernamegithub" class="control-label">Nombre
 								usuario GitHub: </label> <input id="usernamegithub"
 								name="usernamegithub" type="text"
-								value="<c:out value="${usernamegithub}" />"
-								class="form-control" required>
+								value="<c:out value="${usernamegithub}" />" class="form-control"
+								required>
 						</div>
 						<div class="form-group">
 							<label for="reponamegithub" class="control-label">Nombre
 								repositorio GitHub: </label> <input id="reponamegithub"
 								name="reponamegithub"
-								value="<c:out value="${reponamegithub}" />"
-								type="text" class="form-control" required>
+								value="<c:out value="${reponamegithub}" />" type="text"
+								class="form-control" required>
 						</div>
 					</fieldset>
 

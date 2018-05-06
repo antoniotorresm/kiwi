@@ -10,15 +10,18 @@
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-		<span class="navbar-text"> 🥝 </span>
+		<a class="navbar-brand" href="index.jsp">🥝 Kiwi</a>
 		<ul class="navbar-nav">
 			<li class="nav-item"><a class="nav-link" href="#section1">Home</a></li>
 			<li class="nav-item"><a class="nav-link" href="#section2">Servicios</a></li>
 			<li class="nav-item"><a class="nav-link" href="#section3">Explorar</a></li>
 			<li class="nav-item"><a class="nav-link" href="#section4">Crear</a></li>
 			<li class="nav-item"><a class="nav-link" href="#section5">About</a></li>
+		</ul>
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item"><a class="btn btn-info" href="#"
+				role="button">Login</a></li>
 		</ul>
 	</nav>
 	<div id="section1" class="container-fluid"
@@ -103,8 +106,8 @@
 				<p>En esta sección podrás explorar todos los eventos disponibles
 					en nuestra aplicación e inscribirte en el que más te interese. ¡No
 					te pierdas el próximo hackathon!</p>
-				<a href="/HackathonListController" class="btn btn-dark" role="button">Ir
-					al sitio</a>
+				<a href="/HackathonListController" class="btn btn-dark"
+					role="button">Ir al sitio</a>
 			</div>
 			<div class="col-lg-4">
 				<a href="/HackathonListController"><img alt="explore"
