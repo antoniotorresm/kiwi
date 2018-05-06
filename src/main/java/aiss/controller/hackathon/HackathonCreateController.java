@@ -17,6 +17,7 @@ import aiss.model.github.InviteCollaboratorResult;
 import aiss.model.github.RepositoryCreateResult;
 import aiss.model.resource.GithubResource;
 import aiss.model.resource.GoogleCalendarResource;
+import aiss.model.resource.GoogleUserResource;
 
 /**
  * Servlet implementation class HackathonCreateController
@@ -58,11 +59,14 @@ public class HackathonCreateController extends HttpServlet {
 				DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 		String nombreRepositorio = request.getParameter("reponamegithub");
 		String usuarioGithub = request.getParameter("usernamegithub");
-		String correo = request.getParameter("email");
 		String hashtag = request.getParameter("hashtag");
 
 		// TODO: Validaciones
 		if (fechaFin.isBefore(fechaInicio)) {
+			request.getRequestDispatcher("/Error.jsp").forward(request, response);
+		}
+		String googleAccessToken = (String) request.getSession().getAttribute("Google-token");
+		if (googleAccessToken == null || "".equals(googleAccessToken)) {
 			request.getRequestDispatcher("/Error.jsp").forward(request, response);
 		}
 
@@ -74,12 +78,14 @@ public class HackathonCreateController extends HttpServlet {
 			repoResult = github.createRepository(nombreRepositorio);
 
 			InviteCollaboratorResult invResult = github.inviteCollaborator(nombreRepositorio, usuarioGithub);
+			// Google UserInfo
+			GoogleUserResource googleUserResource = new GoogleUserResource(googleAccessToken);
+			String email = googleUserResource.getLoggedUser().getEmail();
 			// Google Calendar
 			GoogleCalendarResource calendar = new GoogleCalendarResource();
-			String eventId = calendar.createEvent(titulo, descripcion, localizacion, fechaInicio, fechaFin, correo);
+			String eventId = calendar.createEvent(titulo, descripcion, localizacion, fechaInicio, fechaFin, email);
 			calendar.saveEventData(eventId, repoResult.getUrl(), hashtag);
 			log.log(Level.FINE, "Hackathon created.");
-
 		} catch(ResourceException ex) {
 			// TODO: Set valid form data
 
@@ -95,16 +101,10 @@ public class HackathonCreateController extends HttpServlet {
 			request.setAttribute("startDate", request.getParameter("startDate"));
 			request.setAttribute("endDate", request.getParameter("endDate"));
 			request.setAttribute("usernamegithub", usuarioGithub);
-			request.setAttribute("email", correo);
 			request.setAttribute("hashtag", hashtag);
 
 			request.getRequestDispatcher("/FormEventView.jsp").forward(request, response);
 		}
-
-		// TODO: Segun los distintos redirigir a success o failure. Si una de las APIs
-		// falla,
-		// deberíamos hacer rollback a lo que sí ha funcionado?
-
 		doGet(request, response);
 	}
 }
