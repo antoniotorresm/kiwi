@@ -58,11 +58,11 @@
 					</h6>
 					<h5>Fecha inicio:</h5>
 					<h6>
-						<c:out value="${requestScope.event.getStart().getDate()}" />
+						<c:out value="${requestScope.event.getStart().getDateTime().toString()}" />
 					</h6>
 					<h5>Fecha fin:</h5>
 					<h6>
-						<c:out value="${requestScope.event.getEnd().getDate()}" />
+						<c:out value="${requestScope.event.getEnd().getDateTime().toString()}" />
 					</h6>
 				</div>
 				<c:if test='${requestScope.joined}'>
