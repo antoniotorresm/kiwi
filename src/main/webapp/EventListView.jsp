@@ -28,21 +28,22 @@
 					<tbody>
 						<c:forEach items="${requestScope.events}" var="e">
 							<c:set var="startDateHuman"
-								value="${e.getStart().getDateTime().toString().split(" T")[0]}" />
+								value="${e.getStart().getDateTime().toString().split("T")[0]}" />
 							<c:set var="startHourHuman"
-								value="${e.getStart().getDateTime().toString().split(" T")[1].split(":")[0]}:${e.getStart().getDateTime().toString().split("T")[1].split(":")[1]}" />
+								value="${e.getStart().getDateTime().toString().split("T")[1].split(":")[0]}:${e.getStart().getDateTime().toString().split("T")[1].split(":")[1]}" />
 
 							<c:set var="endDateHuman"
-								value="${e.getEnd().getDateTime().toString().split(" T")[0]}" />
+								value="${e.getEnd().getDateTime().toString().split("T")[0]}" />
 							<c:set var="endHourHuman"
-								value="${e.getEnd().getDateTime().toString().split(" T")[1].split(":")[0]}:${e.getEnd().getDateTime().toString().split("T")[1].split(":")[1]}" />
+								value="${e.getEnd().getDateTime().toString().split("T")[1].split(":")[0]}:${e.getEnd().getDateTime().toString().split("T")[1].split(":")[1]}" />
 							<tr>
 								<td><c:out value="${e.getSummary()}" /></td>
 								<td><c:out value="${e.getLocation()}" /></td>
 								<td><c:out value="${startDateHuman} ${startHourHuman}" /></td>
 								<td><c:out value="${endDateHuman} ${endHourHuman}" /></td>
-								<td><a href="/HackathonViewController?eventId=${e.getId()}&joined=false" class="btn btn-dark"
-									role="button">Ir al sitio</a></td>
+								<td><a
+									href="/HackathonViewController?eventId=${e.getId()}&joined=false"
+									class="btn btn-dark" role="button">Ir al sitio</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
