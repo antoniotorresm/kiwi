@@ -13,7 +13,7 @@
 						<c:forEach items="${requestScope.listTweets}" var="t">
 							<tr>
 								<td><c:out value="${t.getText()}" /></td>
-								<td><c:out value="${t.getUser()}" /></td>
+								<td><c:out value="@${t.getUser().getScreenName()}" /></td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -57,7 +57,7 @@
 				<div class="well">
 					<h5>Localización:</h5>
 					<h6>
-						<c:out value="${requestScope.event.getDescription()}" />
+						<c:out value="${requestScope.event.getLocation()}" />
 					</h6>
 					<h5>Fecha inicio:</h5>
 					<h6>

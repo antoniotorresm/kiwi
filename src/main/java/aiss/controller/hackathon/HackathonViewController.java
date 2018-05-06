@@ -68,6 +68,7 @@ public class HackathonViewController extends HttpServlet {
 				List<Status> queryResult = tweet.query(hashtag);
 				while (i < 10 && !(i >= queryResult.size())) {
 					listTweets.add(queryResult.get(i));
+					i++;
 				}
 			} catch (TwitterException e) {
 				e.printStackTrace();

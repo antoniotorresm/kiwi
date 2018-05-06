@@ -49,6 +49,8 @@ public class TwitterResource {
 	}
 
 	public List<Status> query(String query) throws TwitterException {
+		Query queryObject = new Query(query);
+		queryObject.setCount(10);
 		QueryResult search = twitter.search(new Query(query));
 		List<Status> tweets = search.getTweets();
 		return tweets;
