@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -44,7 +43,7 @@ public class HackathonListViewController extends HttpServlet {
 
 		for (Event e : gcr.getEvents().getItems()) {
 			if (com.google.appengine.repackaged.org.joda.time.DateTime.now()
-					.isAfter(e.getEnd().getDateTime().getValue())) {
+					.isBefore(e.getEnd().getDateTime().getValue())) {
 				events.add(e);
 			}
 		}
