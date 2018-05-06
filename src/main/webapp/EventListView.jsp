@@ -43,7 +43,7 @@
 								<td><c:out value="${endDateHuman} ${endHourHuman}" /></td>
 								<td><a href="/HackathonViewController" class="btn btn-dark"
 									role="button"
-									onclick="<c:set var="eventId" scope="request" value="${e.getId()}"/> ">Ir
+									onclick="<c:set var="eventId" scope="request" value="${e.getId()}"/>">Ir
 										al sitio</a></td>
 							</tr>
 						</c:forEach>

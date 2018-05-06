@@ -51,33 +51,36 @@ public class HackathonViewController extends HttpServlet {
 			event = gcr.getEvent(eventId);
 			hashtag = gcr.getEventHashtag(eventId);
 			eventRepoUrl = gcr.getEventRepoUrl(eventId);
-		}
-		com.google.api.services.calendar.model.Calendar calendar = gcr.getPrimaryCalendar();
+			com.google.api.services.calendar.model.Calendar calendar = gcr.getPrimaryCalendar();
 
-		if (hashtag == null) {
-			request.setAttribute("message", "Event not found");
-			log.log(Level.FINE, "Event not found.");
-		} else
-			log.log(Level.FINE, "Event with id " + eventId + " loaded.");
+			if (hashtag == null) {
+				request.setAttribute("message", "Event not found");
+				log.log(Level.FINE, "Event not found.");
+			} else
+				log.log(Level.FINE, "Event with id " + eventId + " loaded.");
 
-		// Load Twitter Information
-		List<Status> listTweets = new ArrayList<>();
-		try {
-			TwitterResource tweet = new TwitterResource();
-			// listTweets.addAll(tweet.query(hashtag));
-			for (int i = 0; i < 10; i++) {
-				listTweets.add(tweet.query(hashtag).get(i));
+			// Load Twitter Information
+			List<Status> listTweets = new ArrayList<>();
+			try {
+				TwitterResource tweet = new TwitterResource();
+				// listTweets.addAll(tweet.query(hashtag));
+				for (int i = 0; i < 10; i++) {
+					listTweets.add(tweet.query(hashtag).get(i));
+				}
+			} catch (TwitterException e) {
+				e.printStackTrace();
 			}
-		} catch (TwitterException e) {
-			e.printStackTrace();
+			// Forward to event view
+			request.setAttribute("listTweets", listTweets);
+			request.setAttribute("event", event);
+			request.setAttribute("hashtag", hashtag);
+			request.setAttribute("eventRepoUrl", eventRepoUrl);
+			request.setAttribute("calendar", calendar);
+			request.getRequestDispatcher("/EventDetailView.jsp").forward(request, response);
+		} else {
+			log.log(Level.FINE, "Event id can't be null.");
+			request.getRequestDispatcher("/Error.jsp").forward(request, response);
 		}
-		// Forward to event view
-		request.setAttribute("listTweets", listTweets);
-		request.setAttribute("event", event);
-		request.setAttribute("hashtag", hashtag);
-		request.setAttribute("eventRepoUrl", eventRepoUrl);
-		request.setAttribute("calendar", calendar);
-		request.getRequestDispatcher("/EventDetailView.jsp").forward(request, response);
 	}
 
 	/**
