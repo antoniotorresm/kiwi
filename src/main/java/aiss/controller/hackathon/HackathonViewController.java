@@ -79,7 +79,8 @@ public class HackathonViewController extends HttpServlet {
 			request.setAttribute("hashtag", hashtag);
 			request.setAttribute("eventRepoUrl", eventRepoUrl);
 			request.setAttribute("calendar", calendar);
-			request.getRequestDispatcher("/EventDetailView.jsp").forward(request, response);
+			request.getRequestDispatcher("/EventDetailView.jsp?joined=" + request.getParameter("joined"))
+					.forward(request, response);
 		} else {
 			log.log(Level.FINE, "Event id can't be null.");
 			request.getRequestDispatcher("/Error.jsp").forward(request, response);
