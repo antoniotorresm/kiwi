@@ -11,8 +11,8 @@
 				<table class="table table-hover">
 					<c:forEach items="${requestScope.listTweets}" var="t">
 						<tr>
-							<td><c:out value="${t.getText()}" /></td>
-							<td><c:out value="@${t.getUser().getScreenName()}" /></td>
+							<td><b><c:out value="@${t.getUser().getScreenName()}"/></b>
+								<p><c:out value="${t.getText()}" /></p></td>
 						</tr>
 					</c:forEach>
 				</table>
