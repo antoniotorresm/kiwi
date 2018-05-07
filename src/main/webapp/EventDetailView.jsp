@@ -45,7 +45,7 @@
 				<%
 					if (!request.getParameter("joined").equals("true")) {
 				%>
-				<a href="/HackathonJoinController" class="btn btn-dark btn-block"
+				<a href="/HackathonJoinController?eventId=${requestScope.event.getId()}" class="btn btn-dark btn-block"
 					role="button">Únete</a>
 				<%
 					}

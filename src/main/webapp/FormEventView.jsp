@@ -89,14 +89,7 @@
 
 					<fieldset>
 						<legend>Datos Organización</legend>
-						<!--
-						<div class="form-group">
- 
-							<label for="email" class="control-label">Correo
-								Electrónico: </label> <input id="email" name="email" type="email"
-								value="<c:out value="${email}" />" class="form-control" required>
-						</div>
-						 -->
+					
 						<div class="form-group">
 							<label for="hashtag" class="control-label">Hashtag: </label> <input
 								id="hashtag" name="hashtag" type="text"

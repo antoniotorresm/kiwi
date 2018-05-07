@@ -34,15 +34,16 @@ public class HackathonJoinController extends HttpServlet {
 			throws ServletException, IOException {
 		GoogleCalendarResource gc = new GoogleCalendarResource();
 		String accessToken = (String) request.getSession().getAttribute("Google-token");
+		String eventId = (String) request.getParameter("eventId");
 		if (accessToken != null && !"".equals(accessToken)) {
 			GoogleUserResource gu = new GoogleUserResource(accessToken);
-			gc.sendInvitationToUser(gu.getLoggedUser().getEmail(), (String) request.getAttribute("eventId"));
+			gc.sendInvitationToUser(gu.getLoggedUser().getEmail(), eventId);
 			log.fine("User " + gu.getLoggedUser().getEmail() + " invited to event with id "
-					+ request.getAttribute("eventId"));
-			request.getRequestDispatcher("/EventDetailView?joined=true").forward(request, response);
+					+ eventId);
+			request.getRequestDispatcher("/EventDetailView.jsp?eventId=" + eventId + "&joined=true").forward(request, response);
 		} else {
 			// User not logged in
-			request.getRequestDispatcher("/Error.jsp").forward(request, response);
+			request.getRequestDispatcher("/NotLoggedInError.jsp").forward(request, response);
 		}
 	}
 
