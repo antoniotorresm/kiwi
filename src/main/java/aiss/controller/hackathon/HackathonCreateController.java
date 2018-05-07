@@ -41,7 +41,8 @@ public class HackathonCreateController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("/EventCreated.jsp?title=" + request.getParameter("title")).forward(request,
+				response);
 	}
 
 	/**
@@ -86,10 +87,10 @@ public class HackathonCreateController extends HttpServlet {
 			String eventId = calendar.createEvent(titulo, descripcion, localizacion, fechaInicio, fechaFin, email);
 			calendar.saveEventData(eventId, repoResult.getUrl(), hashtag);
 			log.log(Level.FINE, "Hackathon created.");
-		} catch(ResourceException ex) {
+		} catch (ResourceException ex) {
 			// TODO: Set valid form data
 
-			if(ex.getStatus().getCode() == 422) {
+			if (ex.getStatus().getCode() == 422) {
 				request.setAttribute("githubError", "422");
 			} else {
 				request.setAttribute("reponamegithub", nombreRepositorio);
