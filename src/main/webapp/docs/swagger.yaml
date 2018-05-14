@@ -1,0 +1,343 @@
+swagger: '2.0'
+info:
+  description: |
+    Interfaz de programación de aplicaciones para la creación,
+     modificación y consulta de bibliotecas y libros 👌
+  version: 1.0.0
+  title: 🥝 KIWI API 🥝
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+# host: petstore.swagger.io
+# basePath: /v2
+tags:
+- name: Libro
+  description: Todo sobre tus libros
+- name: Biblioteca
+  description: Explora las acciones sobre tus bibliotecas
+# schemes:
+# - http
+paths:
+  /libros:
+    get:
+      tags:
+      - Libro
+      summary: Devuelve todos los libros de la aplicación.
+      operationId: getAllLibros
+      produces:
+        - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: Listado de todos los libros
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Libro"
+        404:
+          description: Ningún resultado
+    post:
+      tags:
+      - Libro
+      summary: Añade un nuevo libro
+      operationId: addLibro
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "Libro"
+          description: Libro a añadir
+          required: true
+          schema:
+            $ref: "#/definitions/Libro"
+      responses:
+        201:
+          description: "Libro añadido correctamente"
+          schema:
+              $ref: "#/definitions/Libro"
+        400:
+          description: "Libro a insertar no es valido"
+    put:
+      tags:
+      - Libro
+      summary: Actualiza un libro
+      operationId: updateLibro
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: Libro
+          description: Libro a actualizar
+          required: true
+          schema:
+            $ref: "#/definitions/Libro"
+      responses:
+        204:
+          description: "Libro actualizado correctamente"
+        400:
+          description: "Petición incorrecta"
+        404:
+          description: "Libro no encontrado"
+          
+  /libros/{libroId}:
+    get:
+      tags:
+      - Libro
+      summary: Devuelve el libro con el id=libroId
+      operationId: getAllLibrosById
+      produces:
+        - "application/json"
+      parameters:
+        - in: "path"
+          name: "libroId"
+          description: "ID del libro"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: Libro cuyo id coincide con el pasado como parámetro 
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Libro"
+        404:
+          description: "Libro con id pasado no existe"
+    delete:
+      tags:
+      - Libro
+      summary: Elimina el libro con id=libroId
+      operationId: "removeLibro"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "path"
+          name: "libroId"
+          description: "ID del libro"
+          required: true
+          type: "string"
+      responses:
+        204:
+          description: "Libro eliminado correctamente"
+        404:
+          description: "Libro con id pasado no existe"
+  /bibliotecas:
+    get:
+      tags:
+      - Biblioteca
+      summary: Devuelve todas las bibliotecas existentes
+      operationId: getAllBibliotecas
+      produces:
+        - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: Listado de todas las bibliotecas
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Biblioteca"
+        404:
+          description: Ningún resultado
+    post:
+      tags:
+      - Biblioteca
+      summary: Añade una nueva biblioteca
+      operationId: addBiblioteca
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "Biblioteca"
+          description: Biblioteca a añadir
+          required: true
+          schema:
+            $ref: "#/definitions/Biblioteca"
+      responses:
+        201:
+          description: "Biblioteca añadida correctamente"
+          schema:
+              $ref: "#/definitions/Biblioteca"
+        400:
+          description: "Biblioteca a insertar no es valida"
+    put:
+      tags:
+      - Biblioteca
+      summary: Actualiza un biblioteca
+      operationId: updateBiblioteca
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: Biblioteca
+          description: Biblioteca a actualizar
+          required: true
+          schema:
+            $ref: "#/definitions/Biblioteca"
+      responses:
+        204:
+          description: "Libro actualizado correctamente"
+        400:
+          description: "Petición incorrecta"
+        404:
+          description: "Libro no encontrado"
+          
+  /bibliotecas/{bibliotecaId}:
+    get:
+      tags:
+      - Biblioteca
+      summary: Devulve la biblioteca con el id=bibliotecaId
+      operationId: getAllBibliotecaById
+      produces:
+        - "application/json"
+      parameters:
+        - in: "path"
+          name: "bibliotecaId"
+          description: "ID de la biblioteca"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: Biblioteca cuyo id coincide con el pasado como parámetro 
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Biblioteca"
+        404:
+          description: "Biblioteca con id pasado no existe"
+    delete:
+      tags:
+      - Biblioteca
+      summary: Elimina la bliblioteca con id=bibliotecaId
+      operationId: "removeBiblioteca"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "path"
+          name: "bibliotecaId"
+          description: "ID de la biblioteca"
+          required: true
+          type: "string"
+      responses:
+        204:
+          description: "Biblioteca eliminada correctamente"
+        404:
+          description: "Biblioteca con id pasado no existe"
+  /bibliotecas/{bibliotecaId}/{libroId}:
+    post:
+      tags:
+      - Biblioteca
+      summary: Añade el libro con id=libroId a la biblioteca con id=bibliotecaId
+      operationId: addLibroBiblioteca
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "path"
+          name: "bibliotecaId"
+          description: "ID de la biblioteca"
+          required: true
+          type: "string"
+        - in: "path"
+          name: "libroId"
+          description: "ID del libro"
+          required: true
+          type: "string"
+      responses:
+        201:
+          description: "Libro eliminado de la biblioteca correspondiente"
+        404:
+          description: "La biblioteca o el libro no existe"
+    delete:
+      tags:
+      - Biblioteca
+      summary: Elimina el libro con id=libroId de la biblioteca con id=bibliotecaId
+      operationId: "removeLibroBiblioteca"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "path"
+          name: "bibliotecaId"
+          description: "ID de la biblioteca"
+          required: true
+          type: "string"
+        - in: "path"
+          name: "libroId"
+          description: "ID del libro"
+          required: true
+          type: "string"
+      responses:
+        204:
+          description: "Libro eliminado de la biblioteca correspondiente"
+        404:
+          description: "La biblioteca o el libro no existe"
+definitions:
+  Libro:
+    type: object
+    required:
+    - id
+    - titulo
+    - sinopsis
+    - autor
+    - isbn
+    - anyoPublicacion
+    - numPag
+    properties:
+      id:
+        type: string
+        example: l4
+      titulo:
+        type: string
+        example: 1984
+      sinopsis:
+        type: string
+        example: En el año 1984 Londres es una ciudad lúgubre en la que la Policía del Pensamiento controla de forma asfixiante la vida de los ciudadanos. Winston Smith es un peón de este engranaje perverso, su cometido es reescribir la historia para adaptarla a lo que el Partido considera la versión oficial de los hechos... hasta que decide replantearse la verdad del sistema que los gobierna y somete.«Desde El proceso de Kafka ninguna obra fantástica ha alcanzado el horror lógico de 1984.»ArthurKoestler.
+      autor:
+        type: string
+        example: George Orwell
+      isbn:
+        type: string
+        example: 9788423334971
+      anyoPublicacion:
+        type: string
+        example: 1948
+      numPag:
+        type: string
+        example: 336
+  Biblioteca:
+    required:
+      - id
+      - nombre
+      - localizacion
+      - organizador
+      - libros
+    properties:
+      id:
+        type: string
+        example: b5
+      nombre:
+        type: string
+        example: Biblioteca ETSII
+      localizacion:
+        type: string
+        example: Escuela Técnica Superior de Ingeniería Informática
+      organizador:
+        type: string
+        example: Universidad de Sevilla
+      libros:
+        type: "array"
+        items:
+          $ref: "#/definitions/Libro"
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /kiwi-aiss/kiwi-aiss/1.0.0
+schemes:
+ - https
+ - http
