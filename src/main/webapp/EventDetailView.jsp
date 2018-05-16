@@ -11,8 +11,10 @@
 				<table class="table table-hover">
 					<c:forEach items="${requestScope.listTweets}" var="t">
 						<tr>
-							<td><b><c:out value="@${t.getUser().getScreenName()}"/></b>
-								<p><c:out value="${t.getText()}" /></p></td>
+							<td><b><c:out value="@${t.getUser().getScreenName()}" /></b>
+								<p>
+									<c:out value="${t.getText()}" />
+								</p></td>
 						</tr>
 					</c:forEach>
 				</table>
@@ -55,19 +57,27 @@
 		<div class="col-lg-2 sidenav" style="padding-top: 6%;">
 			<p>CALENDAR</p>
 			<div class="well">
+				<c:set var="startDateHuman"
+					value="${requestScope.event.getStart().getDateTime().toString().split("T")[0]}" />
+				<c:set var="startHourHuman"
+					value="${requestScope.event.getStart().getDateTime().toString().split("T")[1].split(":")[0]}:${requestScope.event.getStart().getDateTime().toString().split("T")[1].split(":")[1]}" />
+
+				<c:set var="endDateHuman"
+					value="${requestScope.event.getEnd().getDateTime().toString().split("T")[0]}" />
+				<c:set var="endHourHuman"
+					value="${requestScope.event.getEnd().getDateTime().toString().split("T")[1].split(":")[0]}:${requestScope.event.getEnd().getDateTime().toString().split("T")[1].split(":")[1]}" />
+
 				<h5>Localización:</h5>
 				<h6>
-					<c:out value="${requestScope.event.getLocation()}" />
+					<c:out value="${requestScope.event.getLocation()} " />
 				</h6>
 				<h5>Fecha inicio:</h5>
 				<h6>
-					<c:out
-						value="${requestScope.event.getStart().getDateTime().toString()}" />
+					<c:out value="${startDateHuman} ${startHourHuman}" />
 				</h6>
 				<h5>Fecha fin:</h5>
 				<h6>
-					<c:out
-						value="${requestScope.event.getEnd().getDateTime().toString()}" />
+					<c:out value="${endDateHuman} ${endHourHuman}" />
 				</h6>
 			</div>
 			<%
